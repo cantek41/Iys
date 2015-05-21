@@ -203,6 +203,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ChapterController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
@@ -215,10 +216,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\video_gallery.xml" />
+    <Content Include="App_Data\SideMenu.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Stil.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\Video\playButton.png" />
+    <Content Include="Content\Video\VideoGallery.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -354,12 +359,14 @@
     <Content Include="Views\Document\PartialVievFileUpload.cshtml" />
     <Content Include="Views\Shared\_RootLayout.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
-    <Content Include="Views\Shared\_LeftMenuLayoutView.cshtml" />
+    <Content Include="Views\Shared\_EducationLeftMenu.cshtml" />
     <Content Include="Views\Shared\_HeaderLayout.cshtml" />
+    <Content Include="Views\Shared\_EducationLayout.cshtml" />
+    <Content Include="Views\Shared\_LeftMenuLayoutView.cshtml" />
+    <Content Include="Views\Education\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Documents\" />
+    <Folder Include="fonts\Documents\" />
     <Folder Include="layout\scripts\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

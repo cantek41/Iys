@@ -1,0 +1,215 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EducationLayout.cshtml";
+}
+
+<h2>Course Title >> Lesson Title</h2>
+
+@*@section AdditionalResources {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Video/VideoGallery.css")" />
+}*@
+<style>
+    .dxisControl .dxis-imageArea {
+        border: 1px solid #bfbfbf;
+        -moz-box-shadow: 0 0 3.0px #BFBFBF;
+        -webkit-box-shadow: 0 0 3.0px #BFBFBF;
+        box-shadow: 0 0 3.0px #BFBFBF;
+    }
+
+    .dxisControl .dxis-nbItem {
+        border-bottom: 1px solid #d1d1d1;
+    }
+
+        .dxisControl .dxis-nbSelectedItem,
+        .dxisControl .dxis-nbSelectedItem > div,
+        .dxisControl .dxis-nbHoverItem > div,
+        .dxisControl .dxis-nbItem:hover .dxis-nbHoverItem {
+            display: none !important;
+        }
+
+    .dxisControl .dxis-item,
+    .dxisControl .dxis-nbItem {
+        font-family: 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    }
+
+    .dxisControl .blackPanel {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0.3;
+        filter: progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=30);
+        background-color: #000;
+    }
+
+    .dxisControl .video {
+        height: 371px;
+        overflow: hidden;
+        position: relative;
+        margin: 17px 17px 0 17px;
+    }
+
+        .dxisControl .video > iframe,
+        .dxisControl .video > img {
+            display: block;
+        }
+
+    .dxisControl .text {
+        font-size: 18px;
+        padding: 18px 0 0 18px;
+    }
+
+    .dxisControl .playButton,
+    .dxisControl .closeButton {
+        cursor: pointer;
+        position: absolute;
+        background-image: url(Content/Video/playButton.png);
+    }
+
+        .dxisControl .playButton:hover,
+        .dxisControl .closeButton:hover {
+            opacity: 0.9;
+            filter: alpha(opacity=90);
+        }
+
+    .dxisControl .playButton {
+        top: 50%;
+        left: 50%;
+        margin: -56px;
+        width: 112px;
+        height: 112px;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .dxisControl .closeButton {
+        top: 4px;
+        right: 4px;
+        width: 35px;
+        height: 35px;
+        background-position: 37px 0;
+    }
+
+    .dxisControl.dxTouchUI .closeButton {
+        top: auto;
+        bottom: 16px;
+        right: 17px;
+    }
+
+    .videoItemThumbnail {
+        width: 220px;
+        color: white;
+        font-size: 14px;
+    }
+
+    .dxisControl .product {
+        font-size: 14px;
+    }
+
+    .dxisControl .productText {
+        color: #ababab;
+        font-size: 12px;
+    }
+
+    .dxisControl .videoLenght {
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        color: #ababab;
+        font-size: 18px;
+    }
+
+    .dxisControl .dxis-nbItem:hover .product,
+    .dxisControl .dxis-nbItem:hover .productText {
+        color: #ef6f08;
+    }
+
+    .dxisControl .dxis-nbItem.dxis-selected .product,
+    .dxisControl .dxis-nbItem.dxis-selected .productText {
+        color: #ef6f08;
+        font-weight: bold;
+    }
+
+    .dxisControl .dxis-nbSlidePanel:first-child {
+        border-top: 1px solid #d1d1d1;
+    }
+
+        .dxisControl .dxis-nbSlidePanel:first-child .product {
+            margin-top: 7px;
+        }
+</style>
+<script type="text/javascript">
+    // <![CDATA[
+    var videoItemHtml = null;
+    function OnPlayButtonClick(itemIndex, videoId) {
+        var videoItemElement = $("#videoItem" + itemIndex);
+        videoItemHtml = videoItemElement.html();
+        videoItemElement.empty().append(
+            $("<iframe></iframe>")
+                .attr({
+                    id: 'player', type: 'text/html',
+                    width: 606, height: 371, frameborder: 0,
+                    src: 'https://www.youtube.com/embed/' + videoId + '?showinfo=0&amp;enablejsapi=1&amp;wmode=transparent&amp;autoplay=1'
+                })
+        ).append(
+            $("<div></div>")
+                .addClass("closeButton")
+                .bind("click", function () { StopVideo(); })
+        );
+    }
+    function StopVideo() {
+        $("#player")
+            .attr('src', '')
+            .parent().html(videoItemHtml);
+    }
+    // ]]>
+</script>
+@Html.DevExpress().ImageSlider(
+    settings =>
+    {
+        settings.Name = "imageSlider";
+        settings.EnableTheming = false;
+        settings.Styles.ImageArea.Width = 640;
+        settings.Styles.ImageArea.Height = 445;
+        settings.Styles.ImageArea.BackColor = System.Drawing.Color.White;
+        settings.Styles.NavigationBarThumbnailsModeRight.Paddings.PaddingLeft = 40;
+        settings.Styles.Thumbnail.BackColor = System.Drawing.Color.White;
+        settings.Styles.Thumbnail.ImageWidth = 220;
+        settings.Styles.Thumbnail.ImageHeight = 67;
+        
+        //settings.Styles.ImageArea.Width = Unit.Pixel(640);
+        //settings.Styles.ImageArea.Height = Unit.Pixel(455);
+        //settings.Styles.ImageArea.BackColor = Color.White;
+        //settings.Styles.NavigationBarThumbnailsModeRight.Paddings.PaddingLeft = Unit.Pixel(40);
+        //settings.Styles.Thumbnail.BackColor = Color.White;
+        //settings.Styles.Thumbnail.ImageWidth = Unit.Pixel(220);
+        //settings.Styles.Thumbnail.ImageHeight = Unit.Pixel(67);
+
+        settings.SetItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                "<div id=\"videoItem" + c.ItemIndex + "\" class=\"video\">" +
+                    "<div class=\"blackPanel\"></div>" +
+                    "<img src='" + Url.Content(c.EvalDataItem("ImageUrl").ToString()) + "' alt='" + c.EvalDataItem("Text") + "'/>" +
+                    "<a class=\"playButton\" href=\"javascript:void(0);\" onclick=\"OnPlayButtonClick(" + c.ItemIndex + ",'" + c.EvalDataItem("Name") + "')\"></a>" +
+                "</div> " +
+                "<div class=\"text\">" + c.EvalDataItem("Product") + " - " + c.EvalDataItem("Text") + "</div>"
+            );
+        });
+        settings.SetItemThumbnailTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                    "<div class=\"product\">" + c.EvalDataItem("Product") + "</div>" +
+                    "<div class=\"productText\">" + c.EvalDataItem("Text") + "</div>" +
+                    "<div class=\"videoLenght\">" + c.EvalDataItem("Time") + "</div>"
+            );
+        });
+        settings.SettingsImageArea.ItemTextVisibility = ElementVisibilityMode.None;
+        settings.SettingsImageArea.NavigationButtonVisibility = ElementVisibilityMode.None;
+        settings.SettingsNavigationBar.Position = NavigationBarPosition.Right;
+        settings.SettingsNavigationBar.ThumbnailsModeNavigationButtonVisibility = ElementVisibilityMode.None;
+        settings.SettingsNavigationBar.ItemSpacing = 0;
+        
+
+        settings.ClientSideEvents.ActiveItemChanged = "StopVideo";
+    }
+).BindToXML(Server.MapPath("~/App_Data/video_gallery.xml"), "//items/*").GetHtml()

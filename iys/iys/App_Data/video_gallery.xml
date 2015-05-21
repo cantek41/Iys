@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>
+  <item ImageUrl="resimYolu" Text="Asal Sayılar" Name="Video-1" product="Matematik" Time="3:01">
+   
+  </item>
+
+
+  <!--<item>
+    <ImageUrl></ImageUrl>
+    <Text></Text>
+    <Name></Name>
+    <product></product>
+    <Time></Time>
+  </item>-->
+
+</items>
