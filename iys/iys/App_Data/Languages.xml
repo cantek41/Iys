@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Languages>
+  <Language ID="1" Name="Dansk" />
+  <Language ID="2" Name="Nederlands" />
+  <Language ID="3" Name="English" />
+  <Language ID="4" Name="Français" />
+  <Language ID="5" Name="Deutsch" />
+</Languages>

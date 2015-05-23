@@ -14,5 +14,10 @@ namespace iys.Controllers
         {
             return View();
         }
+
+        public ActionResult Exam()
+        {
+            return View();
+        }
 	}
 }

@@ -40,7 +40,7 @@
 
 <div style="margin-left:2%">
 
-    <h2 class="course-title">Course Title >> Lesson Title</h2>
+    <h2 class="title">Course Title >> Lesson Title</h2>
 
     @Html.DevExpress().ImageSlider(
     settings =>
@@ -86,6 +86,7 @@
         settings.ClientSideEvents.ActiveItemChanged = "StopVideo";
     }
 ).BindToXML(Server.MapPath("~/App_Data/video_gallery.xml"), "//items/*").GetHtml()
+
 
 
 </div>

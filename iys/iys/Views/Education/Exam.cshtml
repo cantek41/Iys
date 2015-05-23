@@ -1,0 +1,32 @@
+﻿@using System.Web.UI.WebControls
+@using System.Drawing
+@{
+    ViewBag.Title = "Exam";
+    Layout = "~/Views/Shared/_EducationLayout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Video/VideoGallery.css")" />
+
+<div class="col-md-6">
+    <h2 class="title">Exam Name</h2>
+    <div>
+        <p class="question">Which of th e following is the best choose for WEB page design?</p>
+        @Html.DevExpress().RadioButtonList(settings =>
+           {
+               settings.Name = "radioButtonList";
+               settings.Properties.RepeatDirection = RepeatDirection.Horizontal;
+               settings.Properties.RepeatColumns = 1;
+               settings.Properties.RepeatLayout = RepeatLayout.Flow;
+               settings.ControlStyle.Border.BorderStyle = BorderStyle.None;
+               
+              
+
+
+               settings.Properties.Items.Add("MVC");
+               settings.Properties.Items.Add("WPF");
+               settings.Properties.Items.Add("ASP.NET");
+               settings.Properties.Items.Add("PHP");
+               settings.Properties.Items.Add("CSS");
+           }).GetHtml()
+    </div>
+
+</div>

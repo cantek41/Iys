@@ -216,6 +216,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Languages.xml" />
     <Content Include="App_Data\video_gallery.xml" />
     <Content Include="App_Data\SideMenu.xml" />
     <Content Include="Content\bootstrap.css" />
@@ -364,6 +365,7 @@
     <Content Include="Views\Shared\_EducationLayout.cshtml" />
     <Content Include="Views\Shared\_LeftMenuLayoutView.cshtml" />
     <Content Include="Views\Education\Index.cshtml" />
+    <Content Include="Views\Education\Exam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\Documents\" />
