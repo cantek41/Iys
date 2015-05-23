@@ -104,7 +104,7 @@
     bottom: 0;
     position: absolute;
     color: #ababab;
-    font-size: 18px;
+    font-size: 16px;
 }
 .dxisControl .dxis-nbItem:hover .product,
 .dxisControl .dxis-nbItem:hover .productText
@@ -124,4 +124,11 @@
 .dxisControl .dxis-nbSlidePanel:first-child .product
 {
     margin-top: 7px;
+}
+
+.course-title {
+
+    font-size: 16px;
+    color: #ef6f08;
+    font-weight: bold;
 }
