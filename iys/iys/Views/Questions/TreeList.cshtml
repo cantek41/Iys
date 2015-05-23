@@ -1,0 +1,66 @@
+﻿@Html.DevExpress().TreeView(
+    settings =>
+    {
+        settings.Name = "treeList";
+
+        settings.CallbackRouteValues = new { Controller = "Questions", Action = "TreeListPartial" };
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        settings.AllowSelectNode = true;
+     //   settings.AllowCheckNodes = true;
+
+
+        settings.ClientSideEvents.NodeClick = "OnTreeViewNodeClick";
+        settings.ClientSideEvents.ExpandedChanged = "OnTreeViewNodeClick";
+    //    settings.ClientSideEvents.CheckedChanged = "OnTreeViewNodeClick";
+        iys.Controllers.QuestionsController.CreateTreeViewNodesRecursive(Model, settings.Nodes, "0");
+        settings.PreRender = (sender, e) =>
+        {
+            ASPxTreeView treeView = (ASPxTreeView)sender;
+            treeView.ExpandAll();
+            //if (Session["TreeListState"] == null)
+            //    ((MVCxTreeList)sender).ExpandToLevel(2);
+        };
+    }
+).GetHtml()
+
+
+
+
+@*@Html.DevExpress().TreeList(
+    settings =>
+    {
+        settings.Name = "treeList";
+
+        settings.CallbackRouteValues = new { Controller = "Questions", Action = "TreeListPartial" };
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        settings.AutoGenerateColumns = false;
+        
+        settings.KeyFieldName = "ID";
+        settings.ParentFieldName = "ParentID";
+        settings.Columns.Add("Name", "Döküman Seç");
+        settings.ClientSideEvents.NodeClick = "OnTreeViewNodeClick";
+        settings.ClientSideEvents.SelectionChanged = "OnTreeViewNodeClick";
+        settings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.NodeDblClick;
+        settings.SettingsCookies.StoreExpandedNodes = true;
+        settings.SettingsSelection.Enabled = true;
+
+        //settings.ClientLayout = (s, e) =>
+        //{
+        //    if (e.LayoutMode == ClientLayoutMode.Loading)
+        //    {
+        //        if (Session["TreeListState"] != null)
+        //            e.LayoutData = (string)Session["TreeListState"];
+        //    }
+        //    else
+        //        Session["TreeListState"] = e.LayoutData;
+        //};
+
+        settings.PreRender = (sender, e) =>
+        {
+            ASPxTreeView treeView = (ASPxTreeView)sender;
+            treeView.ExpandAll();
+            //if (Session["TreeListState"] == null)
+            //    ((MVCxTreeList)sender).ExpandToLevel(2);
+        };
+    }
+).Bind(Model).GetHtml()*@

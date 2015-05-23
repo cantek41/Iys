@@ -1,0 +1,118 @@
+﻿@model  Tuple<IList<iys.Models.TreeListModelItem>, iys.ModelProject.QUESTION>
+@{
+    ViewBag.Title = "Soru";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<script src="~/Scripts/angular.js"></script>
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<!--/Angular-->
+<script>
+    var m_document = angular.module('m_document', []);
+    m_document.controller('c_document', function ($scope) {
+        $scope.Secim = function (_name,_text) {           
+            $('#dersAdi').val(_text);
+            $('#Item2_DOCUMENT_CODE').val(_name);
+        };
+    });
+</script>
+
+
+
+<script>
+    function OnTreeViewNodeClick(s, e) {
+        angular.element(document.getElementById('documentDiv')).scope().Secim(e.node.name,e.node.text);//   $("#cmbNodes").val(e.node.name);
+    }
+</script>
+<!--mesajı ve  elemanların içeriğini temeizleyen script-->
+<script type="text/javascript">
+    var ClearMessage = function () {            
+        $("#Soru :input[type='text']").each(function () {
+            $(this).val("");
+            var input = $(this); // This is the jquery object of the input, do what you will
+        });
+        $('#Item2_QUESTION_CODE').val("-1");
+    };
+</script>
+<!--/mesajı ve  elemanların içeriğini temeizleyen script-->
+<h2>SORU OLUŞTUR</h2>
+@Html.Partial("TreeList", Model.Item1)
+
+<h3>Ders</h3>
+<div id="mesaj">
+
+</div>
+@using (Ajax.BeginForm("addQuestion", "Questions", FormMethod.Post, new AjaxOptions {OnBegin="$('#mesaj').html('')", UpdateTargetId = "mesaj", OnSuccess = "ClearMessage" }))
+{
+    <!--Angular-->
+    <div ng-app="m_document">
+        <div id="documentDiv" ng-controller="c_document">
+            Döcuman adi: <input id="dersAdi" disabled="disabled" />            
+            @Html.TextBoxFor(model => model.Item2.DOCUMENT_CODE)
+            @Html.TextBoxFor(model => model.Item2.QUESTION_CODE)
+        </div>
+        <!--Soru-->
+        <div id="Soru" class="col-md-12">
+            <div class="row"> Soru : @Html.TextBoxFor(model => model.Item2.questionText)</div>
+            <!--Başlık-->
+            <div class="row">
+                <div class="col-md-1">
+                    Doğru Cevap
+                </div>
+                <div class="col-md-1">
+                    Şık
+                </div>
+                <div class="col-md-10">
+                    İçerik
+                </div>
+            </div>
+            <!--/Başlık-->
+            <!--satirlar-->
+            @{
+    char[] siklar = { 'A', 'B', 'C', 'D', 'E' };
+
+    for (int i = 0; i < 5; i++)
+    {
+        <div class="row">
+            <div class="col-md-1">               
+                @Html.RadioButtonFor(model => model.Item2.rightChoose, @siklar[i])
+            </div>
+            <div class="col-md-1">
+                @siklar[i]
+            </div>
+            <div class="col-md-10">
+                @switch (i)
+	            {
+                    case 0:
+                @Html.TextBoxFor(model=>model.Item2.chooseAText)
+                        break;
+                        case 1:
+                @Html.TextBoxFor(model=>model.Item2.chooseBText)
+                        break;
+                        case 2:
+                @Html.TextBoxFor(model=>model.Item2.chooseCText)
+                        break;
+                        case 3:
+                @Html.TextBoxFor(model=>model.Item2.chooseDText)
+                        break;
+                        case 4:
+                @Html.TextBoxFor(model=>model.Item2.chooseEText)
+                        break;
+                    default:
+                        break;
+	            }
+            </div>
+        </div>
+
+    }
+
+            }
+            <!--/satirlar-->
+        </div><!--/Soru-->
+        <input type="submit" value="Kaydet" />
+    </div>
+
+}

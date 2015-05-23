@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    
+
 
     @Html.DevExpress().GetStyleSheets(
     new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
@@ -43,7 +43,7 @@
 
     @Html.DevExpress().Splitter(settings =>
 {
-    
+
     settings.Name = "MainSplitter";
     settings.AllowResize = false;
     settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
@@ -52,7 +52,7 @@
     settings.Styles.Pane.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
     settings.Styles.Pane.Paddings.Padding = System.Web.UI.WebControls.Unit.Pixel(0);
 
-   
+
     settings.Panes.Add(pane =>
     {
         pane.Name = "Content";
@@ -63,8 +63,8 @@
         pane.SetContent(RenderBody().ToHtmlString());
     });
 
-   
+
 }).GetHtml()
-    @RenderSection("scripts", required: false)
+    @*@RenderSection("scripts", required: false)*@
 </body>
 </html>
