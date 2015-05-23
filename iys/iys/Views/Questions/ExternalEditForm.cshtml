@@ -53,6 +53,10 @@
             Döcuman adi: <input id="dersAdi" disabled="disabled" />            
             @Html.TextBoxFor(model => model.Item2.DOCUMENT_CODE)
             @Html.TextBoxFor(model => model.Item2.QUESTION_CODE)
+
+            @Html.HiddenFor(model => model.Item2.COURSE_CODE)
+            @Html.HiddenFor(model => model.Item2.CHAPTER_CODE)
+            @Html.HiddenFor(model => model.Item2.LESSON_CODE)
         </div>
         <!--Soru-->
         <div id="Soru" class="col-md-12">
