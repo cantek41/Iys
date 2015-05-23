@@ -23,5 +23,12 @@ namespace iys.ModelProject
         public DateTime? CREATE_DATE { get; set; }
         public DateTime? LAST_UPDATE { get; set; }
         public int? LAST_UPDATE_USER { get; set; }
+        public string questionText { get; set; }
+        public string chooseAText { get; set; }
+        public string chooseBText { get; set; }
+        public string chooseCText { get; set; }
+        public string chooseDText { get; set; }
+        public string chooseEText { get; set; }
+        public string rightChoose { get; set; }
     }
 }
