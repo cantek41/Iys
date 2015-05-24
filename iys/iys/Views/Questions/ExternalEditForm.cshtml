@@ -3,9 +3,8 @@
     ViewBag.Title = "Soru";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-
+<link href="~/Content/Video/VideoGallery.css" rel="stylesheet" />
 <script src="~/Scripts/angular.js"></script>
-
 <script src="~/Scripts/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
@@ -13,8 +12,8 @@
 <script>
     var m_document = angular.module('m_document', []);
     m_document.controller('c_document', function ($scope) {
-        $scope.Secim = function (_name,_text) {           
-            $('#dersAdi').val(_text);
+        $scope.Secim = function (_name, _text) {
+            $("input[name$='dersAdi']").val(_text);
             $('#Item2_DOCUMENT_CODE').val(_name);
         };
     });
@@ -24,12 +23,12 @@
 
 <script>
     function OnTreeViewNodeClick(s, e) {
-        angular.element(document.getElementById('documentDiv')).scope().Secim(e.node.name,e.node.text);//   $("#cmbNodes").val(e.node.name);
+        angular.element(document.getElementById('documentDiv')).scope().Secim(e.node.name, e.node.text);//   $("#cmbNodes").val(e.node.name);
     }
 </script>
 <!--mesajı ve  elemanların içeriğini temeizleyen script-->
 <script type="text/javascript">
-    var ClearMessage = function () {            
+    var ClearMessage = function () {
         $("#Soru :input[type='text']").each(function () {
             $(this).val("");
             var input = $(this); // This is the jquery object of the input, do what you will
@@ -38,85 +37,130 @@
     };
 </script>
 <!--/mesajı ve  elemanların içeriğini temeizleyen script-->
-<h2>SORU OLUŞTUR</h2>
-@Html.Partial("TreeList", Model.Item1)
 
-<h3>Ders</h3>
-<div id="mesaj">
+<div class="col-md-4">
+    <span class="title">Soru Oluştur</span>
+    @Html.Partial("TreeList", Model.Item1)
+</div>
+
+<div class="col-md-4">
+
+
+    @using (Ajax.BeginForm("addQuestion", "Questions", FormMethod.Post, new AjaxOptions { OnBegin = "$('#mesaj').html('')", UpdateTargetId = "mesaj", OnSuccess = "ClearMessage" }))
+    {
+    <!--Angular-->
+        <div ng-app="m_document">
+            <div id="documentDiv" ng-controller="c_document">
+
+                @Html.DevExpress().RoundPanel(abc =>
+            {
+                abc.Name = "roundPanel";
+
+                abc.Width = 270;
+                abc.HeaderText = "Dosya Adı";
+                abc.View = View.GroupBox;
+                abc.SetContent(Html.Action("Partial1").ToString());
+            }).GetHtml()
+
+
+
+
+
+                @*<span class="sub-title my">Dosya Adı</span>*@
+                <fieldset class="tablom">
+                    <legend>deneme</legend>
+
+                    @Html.DevExpress().TextBoxFor(model => model.Item2.DOCUMENT_CODE).GetHtml()
+                    @Html.DevExpress().TextBoxFor(model => model.Item2.QUESTION_CODE).GetHtml()
+
+                    @Html.HiddenFor(model => model.Item2.COURSE_CODE)
+                    @Html.HiddenFor(model => model.Item2.CHAPTER_CODE)
+                    @Html.HiddenFor(model => model.Item2.LESSON_CODE)
+                    </fieldset>
 
 </div>
-@using (Ajax.BeginForm("addQuestion", "Questions", FormMethod.Post, new AjaxOptions {OnBegin="$('#mesaj').html('')", UpdateTargetId = "mesaj", OnSuccess = "ClearMessage" }))
-{
-    <!--Angular-->
-    <div ng-app="m_document">
-        <div id="documentDiv" ng-controller="c_document">
-            Döcuman adi: <input id="dersAdi" disabled="disabled" />            
-            @Html.TextBoxFor(model => model.Item2.DOCUMENT_CODE)
-            @Html.TextBoxFor(model => model.Item2.QUESTION_CODE)
+            <!--Soru-->
+           
+                <div id="Soru" class="col-md-12">
+                    <div class="row">
+                        <span class="sub-title">Soru</span>
+                        @*@Html.DevExpress().TextBoxFor(model => model.Item2.questionText).GetHtml()*@
 
-            @Html.HiddenFor(model => model.Item2.COURSE_CODE)
-            @Html.HiddenFor(model => model.Item2.CHAPTER_CODE)
-            @Html.HiddenFor(model => model.Item2.LESSON_CODE)
-        </div>
-        <!--Soru-->
-        <div id="Soru" class="col-md-12">
-            <div class="row"> Soru : @Html.TextBoxFor(model => model.Item2.questionText)</div>
-            <!--Başlık-->
+                        @Html.DevExpress().Memo(settings =>
+                   {
+                       settings.Name = "memo";
+                       settings.Text = "Confections - Desserts, candies, and sweet breads.";
+                   }).GetHtml()
+                    </div>
+                    <!--Başlık-->
+                    <div class="row">
+                       
+                        <div class="col-md-1">Seçenek</div>
+                        <div class="col-md-8">İçerik</div>
+                        <div class="col-md-3">Doğru Cevap</div>
+                    </div>
+                    <!--/Başlık-->
+                    <!--satirlar-->
+                    @{
+        char[] siklar = { 'A', 'B', 'C', 'D', 'E' };
+
+        for (int i = 0; i < 5; i++)
+        {
             <div class="row">
+                
                 <div class="col-md-1">
-                    Doğru Cevap
+                    @siklar[i]
                 </div>
-                <div class="col-md-1">
-                    Şık
-                </div>
-                <div class="col-md-10">
-                    İçerik
-                </div>
-            </div>
-            <!--/Başlık-->
-            <!--satirlar-->
-            @{
-    char[] siklar = { 'A', 'B', 'C', 'D', 'E' };
+                <div class="col-md-8">
+                    @switch (i)
+                    {
+                        case 0:
 
-    for (int i = 0; i < 5; i++)
-    {
-        <div class="row">
-            <div class="col-md-1">               
-                @Html.RadioButtonFor(model => model.Item2.rightChoose, @siklar[i])
-            </div>
-            <div class="col-md-1">
-                @siklar[i]
-            </div>
-            <div class="col-md-10">
-                @switch (i)
-	            {
-                    case 0:
-                @Html.TextBoxFor(model=>model.Item2.chooseAText)
-                        break;
+                            @Html.DevExpress().TextBoxFor(model => model.Item2.chooseAText).GetHtml()
+                            break;
                         case 1:
-                @Html.TextBoxFor(model=>model.Item2.chooseBText)
-                        break;
+                        @Html.DevExpress().TextBoxFor(model => model.Item2.chooseBText).GetHtml()
+                            break;
                         case 2:
-                @Html.TextBoxFor(model=>model.Item2.chooseCText)
-                        break;
+                        @Html.DevExpress().TextBoxFor(model => model.Item2.chooseCText).GetHtml()
+                            break;
                         case 3:
-                @Html.TextBoxFor(model=>model.Item2.chooseDText)
-                        break;
+                        @Html.DevExpress().TextBoxFor(model => model.Item2.chooseDText).GetHtml()
+                            break;
                         case 4:
-                @Html.TextBoxFor(model=>model.Item2.chooseEText)
-                        break;
-                    default:
-                        break;
-	            }
+                        @Html.DevExpress().TextBoxFor(model => model.Item2.chooseEText).GetHtml()
+                            break;
+                        default:
+                            break;
+                    }
+                </div>
+                <div class="col-md-3">
+                    @Html.RadioButtonFor(model => model.Item2.rightChoose, @siklar[i])
+                </div>
             </div>
+
+        }
+
+                    }
+                    <!--/satirlar-->
+                </div><!--/Soru-->
+         
+            <div style="float:left">
+                @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "btnKaydet";
+    settings.Text = "Kaydet";
+    settings.UseSubmitBehavior = true;
+}).GetHtml()
+            </div>
+        </div>
+        <div id="mesaj" style="float:left;margin-left:5px;" class="question">
+
+        </div>
+
+       
+        <div style="padding: 20px; display: inline-block; vertical-align: top;">
+
         </div>
 
     }
-
-            }
-            <!--/satirlar-->
-        </div><!--/Soru-->
-        <input type="submit" value="Kaydet" />
-    </div>
-
-}

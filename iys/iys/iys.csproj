@@ -698,6 +698,7 @@
     <Content Include="Views\Education\Exam.cshtml" />
     <Content Include="Views\Questions\ExternalEditForm.cshtml" />
     <Content Include="Views\Questions\TreeList.cshtml" />
+    <Content Include="Views\Questions\Partial1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\Documents\" />
@@ -735,7 +736,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>25204</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:25209/</IISUrl>
+          <IISUrl>http://localhost:25222/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
