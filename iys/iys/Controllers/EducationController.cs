@@ -16,7 +16,7 @@ namespace iys.Controllers
         // GET: /Education/
         public ActionResult Index()
         {
-            
+
             return View(getTree());
         }
 
@@ -31,12 +31,12 @@ namespace iys.Controllers
         [HttpPost]
         public string getContentDocumant(int DocumentCode)
         {
-            using(iysContext db=new iysContext())
+            using (iysContext db = new iysContext())
             {
                 DOCUMENT doc = db.DOCUMENTS.Find(DocumentCode);
                 return doc.PATH;
-            }        
-           // return "<embed src=\"/Content/pdfd.pdf\" width=\"500\" height=\"375\">"; 
+            }
+            // return "<embed src=\"/Content/pdfd.pdf\" width=\"500\" height=\"375\">"; 
         }
         public static List<TreeListModelItem> getTree()
         {
@@ -73,10 +73,33 @@ namespace iys.Controllers
             return treeListItem;
         }
 
-
-        public ActionResult Exam()
+        [HttpPost]
+        public ActionResult Exam(int documenCode)
         {
-            return View();
+            using (iysContext db = new iysContext())
+            {
+                ViewBag.ExamName = db.DOCUMENTS.Find(documenCode).DOCUMENT_NAME;
+                List<QUESTION> doc = db.QUESTIONS.Where(x => x.DOCUMENT_CODE == documenCode).ToList();
+                return View(doc);
+            }
+
+        }
+        [HttpPost]
+        public ActionResult ExamChoose(int DOCUMENT_CODE,int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                
+            }
+            var YourRadioButton = Request.Form["item_QUESTION_CODE_0"];
+            using (iysContext db = new iysContext())
+            {
+                int documenCode = 1002;
+                ViewBag.ExamName = db.DOCUMENTS.Find(documenCode).DOCUMENT_NAME;
+                List<QUESTION> doc = db.QUESTIONS.Where(x => x.DOCUMENT_CODE == documenCode).ToList();
+                return View(doc);
+            }
+
         }
     }
 }

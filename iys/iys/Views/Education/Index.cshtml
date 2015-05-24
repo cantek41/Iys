@@ -13,11 +13,16 @@
 <div style="margin-left:2%">
 
     <h2 class="title">Course Title >> Lesson Title</h2> 
-  
-    <div ng-app="content">
+  @using (Html.BeginForm("Exam", "Education"))
+  { 
+      <div ng-app="content">
         <div id="content" ng-controller="c_content">           
             <div ng-bind-html-unsafe="icerik"></div>
+            <input  name="documenCode" ng-value="documenCode" />
         </div>
     </div> 
+      <div><input type="submit" value=" Sınava Git" /></div>
+  }
+    
   
 </div>

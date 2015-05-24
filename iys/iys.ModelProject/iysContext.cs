@@ -29,6 +29,8 @@ namespace iys.ModelProject
 
         public DbSet<GROUPDES> GROUPDESS { get; set; }
         public DbSet<RES> RESS { get; set; }
+        public DbSet<USER_ANSWER> USER_ANSWERS { get; set; }
+        public DbSet<USER_QUIZ_STATUS> USER_QUIZ_STATUSS { get; set; }
      
     }
 }

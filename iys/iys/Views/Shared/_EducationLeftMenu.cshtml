@@ -1,5 +1,4 @@
-﻿
-<script>
+﻿<script>
     function OnTreeViewNodeClick(s, e) {        
      //   angular.element(document.getElementById('content')).scope().Secim(e.node.name);//   $("#cmbNodes").val(e.node.name);
         $.ajax({
@@ -11,16 +10,14 @@
                 var $scope = angular.element(document.getElementById('content')).scope();
                 $scope.$apply(function () {
                     $scope.icerik = (data);
+                    $scope.documenCode = e.node.name;
                 });
             },
             error: function (data) {
                 alert("Server Hatası" + data.toString());
             }
-        });
-
-        
+        });        
     }
-
 </script>
 <div class="leftPanel">   
     @Html.DevExpress().TreeView(
