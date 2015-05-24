@@ -1,32 +1,72 @@
 ﻿@using System.Web.UI.WebControls
+@model  List<iys.ModelProject.QUESTION>
 @using System.Drawing
 @{
     ViewBag.Title = "Exam";
-    Layout = "~/Views/Shared/_EducationLayout.cshtml";
+    Layout = "~/Views/Shared/_RootLayout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Video/VideoGallery.css")" />
-
+<script>
+    $(document).ready(function () {
+        $('.leftPanel').hide();
+    });
+</script>
 <div class="col-md-6">
-    <h2 class="title">Exam Name</h2>
-    <div>
-        <p class="question">Which of th e following is the best choose for WEB page design?</p>
-        @Html.DevExpress().RadioButtonList(settings =>
-           {
-               settings.Name = "radioButtonList";
-               settings.Properties.RepeatDirection = RepeatDirection.Horizontal;
-               settings.Properties.RepeatColumns = 1;
-               settings.Properties.RepeatLayout = RepeatLayout.Flow;
-               settings.ControlStyle.Border.BorderStyle = BorderStyle.None;
-               
-              
 
+    <h2 class="title">@ViewBag.ExamName</h2>
+    @using (Html.BeginForm("ExamChoose", "Education"))
+    {
+        @Html.TextBox("DOCUMENT_CODE", Model.ElementAt(0).DOCUMENT_CODE)
+        @Html.TextBox("count",Model.Count)
+        int i = 0;
+        foreach (var item in Model)
+        {
+            @Html.Hidden("item_QUESTION_CODE_" + i.ToString(), @item.QUESTION_CODE)
+            i = i + 1;
+            char[] siklar = { 'A', 'B', 'C', 'D', 'E' };
+            <div class="col-md-12">
+                <p class="question">@i) @Html.DisplayFor(model => item.questionText)</p>
+            </div>
+            
+                                                             
+            for (int j = 0; j < 5; j++)
+            {
+                <div class="row">
+                    <div class="col-md-1">
 
-               settings.Properties.Items.Add("MVC");
-               settings.Properties.Items.Add("WPF");
-               settings.Properties.Items.Add("ASP.NET");
-               settings.Properties.Items.Add("PHP");
-               settings.Properties.Items.Add("CSS");
-           }).GetHtml()
-    </div>
+                        @Html.RadioButton(@item.QUESTION_CODE.ToString(), @siklar[j])
+                    </div>
+                    <div class="col-md-1">
+                        @siklar[j]
+                    </div>
+                    <div class="col-md-10">
+                        @switch (j)
+                        {
+                            case 0:
+                                @Html.DisplayFor(model => item.chooseAText)
+                                break;
+                            case 1:
+                            @Html.DisplayFor(model => item.chooseBText)
+                                break;
+                            case 2:
+                            @Html.DisplayFor(model => item.chooseCText)
+                                break;
+                            case 3:
+                            @Html.DisplayFor(model => item.chooseDText)
+                                break;
+                            case 4:
+                            @Html.DisplayFor(model => item.chooseEText)
+                                break;
+                            default:
+                                break;
+                        }
+                    </div>
+                </div>
+
+            }
+
+        }
+        <input type="submit" value="Gönder" />
+    }
+
 
 </div>

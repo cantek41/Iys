@@ -1,57 +1,58 @@
-﻿@{
-    ViewBag.Title = "index";
-    Layout = "~/Views/Shared/_MainLayout.cshtml";
-}
+@model IList<iys.Models.TreeListModelItem>
+    @{
+        ViewBag.Title = "index";
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
 
-<style>
+    }
+    <style>
     a {
 
         background-color:transparent;
     }
-</style>
+    </style>
 
-<script type="text/javascript">
-    var courseValue = 0;
-    var chapterValue = 0;
-    var lessonValue = 0;
-    function CoursesCombo_SelectedIndexChanged(s, e) {
-        //alert("CoursesCombo_SelectedIndexChanged");
-        courseValue = s.GetValue();
-        CHAPTER_CODE.PerformCallback();
+    <script type="text/javascript">
+        var courseValue = 0;
+        var chapterValue = 0;
+        var lessonValue = 0;
+        function CoursesCombo_SelectedIndexChanged(s, e) {
+            //alert("CoursesCombo_SelectedIndexChanged");
+            courseValue = s.GetValue();
+            CHAPTER_CODE.PerformCallback();
 
-    }
-    function ChaptersCombo_SelectedIndexChanged(s, e) {
-        //alert("ChaptersCombo_SelectedIndexChanged");
-        chapterValue = s.GetValue();
-        LESSON_CODE.PerformCallback();
+        }
+        function ChaptersCombo_SelectedIndexChanged(s, e) {
+            //alert("ChaptersCombo_SelectedIndexChanged");
+            chapterValue = s.GetValue();
+            LESSON_CODE.PerformCallback();
 
-    }
+        }
 
-    function LessonsCombo_SelectedIndexChanged(s, e) {
+        function LessonsCombo_SelectedIndexChanged(s, e) {
 
-        lessonValue = s.GetValue();
-        DOCUMENT_CODE.PerformCallback();
+            lessonValue = s.GetValue();
+            DOCUMENT_CODE.PerformCallback();
 
-    }
+        }
 
-    function ChapterCombo_BeginCallback(s, e) {
-        //alert("ChapterCombo_BeginCallback");
-        e.customArgs['COURSE_CODE'] = courseValue;
-    }
+        function ChapterCombo_BeginCallback(s, e) {
+            //alert("ChapterCombo_BeginCallback");
+            e.customArgs['COURSE_CODE'] = courseValue;
+        }
 
-    function LessonCombo_BeginCallback(s, e) {
-        //alert("LessonCombo_BeginCallback");
-        e.customArgs['CHAPTER_CODE'] = chapterValue;
-        e.customArgs['COURSE_CODE'] = courseValue;
-    }
-    function DocumentCombo_BeginCallback(s, e) {
-        //alert("LessonCombo_BeginCallback");
-        e.customArgs['CHAPTER_CODE'] = chapterValue;
-        e.customArgs['COURSE_CODE'] = courseValue;
-        e.customArgs['LESSON_CODE'] = lessonValue;
-    }
-</script>
+        function LessonCombo_BeginCallback(s, e) {
+            //alert("LessonCombo_BeginCallback");
+            e.customArgs['CHAPTER_CODE'] = chapterValue;
+            e.customArgs['COURSE_CODE'] = courseValue;
+        }
+        function DocumentCombo_BeginCallback(s, e) {
+            //alert("LessonCombo_BeginCallback");
+            e.customArgs['CHAPTER_CODE'] = chapterValue;
+            e.customArgs['COURSE_CODE'] = courseValue;
+            e.customArgs['LESSON_CODE'] = lessonValue;
+        }
+    </script>
 
-<div class="col-md-11">
-    @Html.Action("GridViewPartial")
-</div>
+    <div class="col-md-11">
+        @Html.Action("GridViewPartial")
+    </div>

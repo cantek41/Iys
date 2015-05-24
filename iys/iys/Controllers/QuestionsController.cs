@@ -8,6 +8,7 @@ using DevExpress.Web;
 using DevExpress.Web.Mvc;
 using iys.Models;
 using iys.ModelProject;
+using System.Reflection;
 
 namespace iys.Controllers
 {
@@ -37,6 +38,7 @@ namespace iys.Controllers
         public ActionResult ExternalEditFormEdit(int productID)
         {
             var modelItem = db.QUESTIONS.FirstOrDefault(it => it.QUESTION_CODE == productID);
+            
             if (modelItem == null)
             {
                 modelItem = new iys.ModelProject.QUESTION();
@@ -74,7 +76,7 @@ namespace iys.Controllers
                     question.chooseDText = Item2.chooseDText;
                     question.chooseEText = Item2.chooseEText;
                     db.QUESTIONS.Add(question);
-                    db.SaveChanges();
+                    db.SaveChanges();                    
                     return Content("Eklendi");
                 }
                 else

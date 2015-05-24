@@ -4,89 +4,25 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_EducationLayout.cshtml";
 }
-
-
-
-
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Video/VideoGallery.css")" />
-
-
-<script type="text/javascript">
-    // <![CDATA[
-    var videoItemHtml = null;
-    function OnPlayButtonClick(itemIndex, videoId) {
-        var videoItemElement = $("#videoItem" + itemIndex);
-        videoItemHtml = videoItemElement.html();
-        videoItemElement.empty().append(
-            $("<iframe></iframe>")
-                .attr({
-                    id: 'player', type: 'text/html',
-                    width: 606, height: 371, frameborder: 0,
-                    src: 'https://www.youtube.com/embed/' + videoId + '?showinfo=0&amp;enablejsapi=1&amp;wmode=transparent&amp;autoplay=1'
-                })
-        ).append(
-            $("<div></div>")
-                .addClass("closeButton")
-                .bind("click", function () { StopVideo(); })
-        );
-    }
-    function StopVideo() {
-        $("#player")
-            .attr('src', '')
-            .parent().html(videoItemHtml);
-    }
-    // ]]>
+<script src="~/Scripts/angular.js"></script>
+<script>
+    var content = angular.module('content', []);
+    content.controller('c_content',['$scope', function ($scope) {      
+    }]);
 </script>
-
 <div style="margin-left:2%">
 
-    <h2 class="title">Course Title >> Lesson Title</h2>
-
-    @Html.DevExpress().ImageSlider(
-    settings =>
-    {
-        settings.Name = "imageSlider";
-        settings.EnableTheming = false;
-
-
-        settings.Styles.ImageArea.Width = Unit.Pixel(640);
-        settings.Styles.ImageArea.Height = Unit.Pixel(455);
-        settings.Styles.ImageArea.BackColor = Color.White;
-        settings.Styles.NavigationBarThumbnailsModeRight.Paddings.PaddingLeft = Unit.Pixel(40);
-        settings.Styles.Thumbnail.BackColor = Color.White;
-        settings.Styles.Thumbnail.ImageWidth = Unit.Pixel(220);
-        settings.Styles.Thumbnail.ImageHeight = Unit.Pixel(67);
-
-        settings.SetItemTemplateContent(c =>
-        {
-            ViewContext.Writer.Write(
-                "<div id=\"videoItem" + c.ItemIndex + "\" class=\"video\">" +
-                    "<div class=\"blackPanel\"></div>" +
-                    "<img src='" + Url.Content(c.EvalDataItem("ImageUrl").ToString()) + "' alt='" + c.EvalDataItem("Text") + "'/>" +
-                    "<a class=\"playButton\" href=\"javascript:void(0);\" onclick=\"OnPlayButtonClick(" + c.ItemIndex + ",'" + c.EvalDataItem("Name") + "')\"></a>" +
-                "</div> " +
-                "<div class=\"text\">" + c.EvalDataItem("Product") + " - " + c.EvalDataItem("Text") + "</div>"
-            );
-        });
-        settings.SetItemThumbnailTemplateContent(c =>
-        {
-            ViewContext.Writer.Write(
-                    "<div class=\"product\">" + c.EvalDataItem("Product") + "</div>" +
-                    "<div class=\"productText\">" + c.EvalDataItem("Text") + "</div>" +
-                    "<div class=\"videoLenght\">" + c.EvalDataItem("Time") + "</div>"
-            );
-        });
-        settings.SettingsImageArea.ItemTextVisibility = ElementVisibilityMode.None;
-        settings.SettingsImageArea.NavigationButtonVisibility = ElementVisibilityMode.None;
-        settings.SettingsNavigationBar.Position = NavigationBarPosition.Right;
-        settings.SettingsNavigationBar.ThumbnailsModeNavigationButtonVisibility = ElementVisibilityMode.None;
-        settings.SettingsNavigationBar.ItemSpacing = 0;
-
-
-        settings.ClientSideEvents.ActiveItemChanged = "StopVideo";
-    }
-).BindToXML(Server.MapPath("~/App_Data/video_gallery.xml"), "//items/*").GetHtml()
-
-
-
+    <h2 class="title">Course Title >> Lesson Title</h2> 
+  @using (Html.BeginForm("Exam", "Education"))
+  { 
+      <div ng-app="content">
+        <div id="content" ng-controller="c_content">           
+            <div ng-bind-html-unsafe="icerik"></div>
+            <input  name="documenCode" ng-value="documenCode" />
+        </div>
+    </div> 
+      <div><input type="submit" value=" Sınava Git" /></div>
+  }
+    
+  
 </div>

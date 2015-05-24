@@ -311,3 +311,4 @@
 /// <reference path="jquery-1.11.2.js" />
 /// <reference path="jquery.cycle.js" />
 /// <reference path="jquery.js" />
+/// <reference path="angularvideo/applicaiton.js" />

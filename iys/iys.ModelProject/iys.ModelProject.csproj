@@ -59,6 +59,7 @@
     <Compile Include="TABLOLAR\QUESTION.cs" />
     <Compile Include="TABLOLAR\RES.cs" />
     <Compile Include="TABLOLAR\USER.cs" />
+    <Compile Include="TABLOLAR\USER_ANSWER.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
