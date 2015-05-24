@@ -39,7 +39,7 @@
 <!--/mesajı ve  elemanların içeriğini temeizleyen script-->
 
 <div class="col-md-4">
-    <span class="title">Soru Oluştur</span>
+    <span class="sub-title">Konular</span>
     @Html.Partial("TreeList", Model.Item1)
 </div>
 
@@ -52,7 +52,7 @@
         <div ng-app="m_document">
             <div id="documentDiv" ng-controller="c_document">
 
-                <span class="sub-title my">Dosya Adı</span>
+                <span class="sub-title my">Konu</span>
                 @Html.DevExpress().TextBox(settings =>
                     {
                         settings.Name = "dersAdi";

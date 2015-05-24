@@ -260,14 +260,17 @@
     <Content Include="images\slide.png" />
     <Content Include="images\test.png" />
     <Content Include="images\verticalMenu\assets.png" />
+    <Content Include="images\verticalMenu\book.png" />
     <Content Include="images\verticalMenu\comments.png" />
     <Content Include="images\verticalMenu\dashboard.png" />
+    <Content Include="images\verticalMenu\list.png" />
     <Content Include="images\verticalMenu\listBg.png" />
     <Content Include="images\verticalMenu\listSelectedBg.png" />
     <Content Include="images\verticalMenu\maps.png" />
     <Content Include="images\verticalMenu\pages.png" />
     <Content Include="images\verticalMenu\search.png" />
     <Content Include="images\verticalMenu\settings.png" />
+    <Content Include="images\verticalMenu\text-file.png" />
     <Content Include="images\verticalMenu\texture.png" />
     <Content Include="images\verticalMenu\trash.png" />
     <Content Include="images\verticalMenu\widgets.png" />
