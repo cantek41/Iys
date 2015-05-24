@@ -238,7 +238,7 @@
     <Content Include="Content\spinner.gif" />
     <Content Include="Content\Stil.css" />
     <Content Include="Content\style.css" />
-    <Content Include="Content\Video\VideoGallery.css" />
+    <Content Include="Content\VideoGallery.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

@@ -158,3 +158,38 @@ ul#nav ul.flyout li a {
 ul#nav ul.flyout li a:hover {
 	color: #ffffff;
 }
+
+.title {
+
+    font-size: 20px;
+    color: #ef6f08;
+    font-weight: bold;
+    margin-bottom:5px;
+}
+
+.sub-title {
+
+    font-size: 12px;
+    color: #ef6f08;
+    font-weight: bold;
+    margin-bottom:5px;
+}
+
+.question{
+    font-family: 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+    color: #999;
+    font-weight:bold;
+}
+
+.tablom {
+    
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    border:solid;
+    border-collapse: separate;
+    color:#ababab;
+    padding:5px;
+   
+}
