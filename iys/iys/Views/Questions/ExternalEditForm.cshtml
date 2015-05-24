@@ -52,66 +52,59 @@
         <div ng-app="m_document">
             <div id="documentDiv" ng-controller="c_document">
 
-                @Html.DevExpress().RoundPanel(abc =>
-            {
-                abc.Name = "roundPanel";
-
-                abc.Width = 270;
-                abc.HeaderText = "Dosya Adı";
-                abc.View = View.GroupBox;
-                abc.SetContent(Html.Action("Partial1").ToString());
-            }).GetHtml()
+                <span class="sub-title my">Dosya Adı</span>
+                @Html.DevExpress().TextBox(settings =>
+                    {
+                        settings.Name = "dersAdi";
+                    }).GetHtml()
 
 
 
 
-
-                @*<span class="sub-title my">Dosya Adı</span>*@
-                <fieldset class="tablom">
-                    <legend>deneme</legend>
-
+                
+                <div style="display:none">
                     @Html.DevExpress().TextBoxFor(model => model.Item2.DOCUMENT_CODE).GetHtml()
                     @Html.DevExpress().TextBoxFor(model => model.Item2.QUESTION_CODE).GetHtml()
+                </div>
+                @Html.HiddenFor(model => model.Item2.COURSE_CODE)
+                @Html.HiddenFor(model => model.Item2.CHAPTER_CODE)
+                @Html.HiddenFor(model => model.Item2.LESSON_CODE)
 
-                    @Html.HiddenFor(model => model.Item2.COURSE_CODE)
-                    @Html.HiddenFor(model => model.Item2.CHAPTER_CODE)
-                    @Html.HiddenFor(model => model.Item2.LESSON_CODE)
-                    </fieldset>
 
-</div>
+            </div>
             <!--Soru-->
-           
-                <div id="Soru" class="col-md-12">
-                    <div class="row">
-                        <span class="sub-title">Soru</span>
-                        @*@Html.DevExpress().TextBoxFor(model => model.Item2.questionText).GetHtml()*@
 
-                        @Html.DevExpress().Memo(settings =>
+            <div id="Soru" class="col-md-12">
+                <div class="row">
+                    <span class="sub-title">Soru</span>
+                    @*@Html.DevExpress().TextBoxFor(model => model.Item2.questionText).GetHtml()*@
+
+                    @Html.DevExpress().Memo(settings =>
                    {
                        settings.Name = "memo";
                        settings.Text = "Confections - Desserts, candies, and sweet breads.";
                    }).GetHtml()
-                    </div>
-                    <!--Başlık-->
-                    <div class="row">
-                       
-                        <div class="col-md-1">Seçenek</div>
-                        <div class="col-md-8">İçerik</div>
-                        <div class="col-md-3">Doğru Cevap</div>
-                    </div>
-                    <!--/Başlık-->
-                    <!--satirlar-->
-                    @{
+                </div>
+                <!--Başlık-->
+                <div class="row">
+
+                    <div class="col-md-1"></div>
+                    <div class="col-md-6 sub-title">İçerik</div>
+                    <div class="col-md-4 sub-title">Doğru Cevap</div>
+                </div>
+                <!--/Başlık-->
+                <!--satirlar-->
+                @{
         char[] siklar = { 'A', 'B', 'C', 'D', 'E' };
 
         for (int i = 0; i < 5; i++)
         {
             <div class="row">
-                
-                <div class="col-md-1">
+
+                <div class="col-md-1" style="font-weight:bold">
                     @siklar[i]
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     @switch (i)
                     {
                         case 0:
@@ -141,10 +134,10 @@
 
         }
 
-                    }
-                    <!--/satirlar-->
-                </div><!--/Soru-->
-         
+                }
+                <!--/satirlar-->
+            </div><!--/Soru-->
+
             <div style="float:left">
                 @Html.DevExpress().Button(settings =>
 {
@@ -158,7 +151,7 @@
 
         </div>
 
-       
+
         <div style="padding: 20px; display: inline-block; vertical-align: top;">
 
         </div>
