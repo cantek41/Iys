@@ -43,7 +43,7 @@
     @Html.Partial("TreeList", Model.Item1)
 </div>
 
-<div class="col-md-4">
+<div class="col-md-4 divider">
 
 
     @using (Ajax.BeginForm("addQuestion", "Questions", FormMethod.Post, new AjaxOptions { OnBegin = "$('#mesaj').html('')", UpdateTargetId = "mesaj", OnSuccess = "ClearMessage" }))

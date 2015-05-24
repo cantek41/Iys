@@ -193,3 +193,9 @@ ul#nav ul.flyout li a:hover {
     padding:5px;
    
 }
+
+.divider{
+ 
+    border-left:1px solid #999;
+    padding-left:20px;
+}
