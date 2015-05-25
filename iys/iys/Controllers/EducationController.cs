@@ -85,19 +85,40 @@ namespace iys.Controllers
 
         }
         [HttpPost]
-        public ActionResult ExamChoose(int DOCUMENT_CODE,int count)
+        public ActionResult ExamChoose(int DOCUMENT_CODE, int count)
         {
-            for (int i = 0; i < count; i++)
-            {
-                
-            }
-            var YourRadioButton = Request.Form["item_QUESTION_CODE_0"];
             using (iysContext db = new iysContext())
             {
-                int documenCode = 1002;
-                ViewBag.ExamName = db.DOCUMENTS.Find(documenCode).DOCUMENT_NAME;
-                List<QUESTION> doc = db.QUESTIONS.Where(x => x.DOCUMENT_CODE == documenCode).ToList();
-                return View(doc);
+                USER_QUIZ_STATUS quiz = new USER_QUIZ_STATUS();
+                quiz.DOCUMENT_CODE = DOCUMENT_CODE;              
+                quiz.DATE = DateTime.Now;
+                db.USER_QUIZ_STATUSS.Add(quiz);
+                db.SaveChanges();
+                List<QUESTION> sorular = db.QUESTIONS.Where(x => x.DOCUMENT_CODE == DOCUMENT_CODE).ToList();
+                int dogruCevap = 0;
+                for (int i = 0; i < count; i++)
+                {
+                    USER_ANSWER answer = new USER_ANSWER();
+                    string question_code = Request.Form["item_QUESTION_CODE_"+i.ToString()].ToString();
+                    string chose = Request.Form[question_code].ToString();
+                    answer.QUESTION_CODE = Convert.ToInt32(question_code);
+                    answer.CHOOSE = chose;
+                    answer.QUIZ_CODE = quiz.QUIZ_CODE;
+                    db.USER_ANSWERS.Add(answer);
+
+                    //doğre cevap bul
+                    if (chose.Equals(sorular.Where(x=>x.QUESTION_CODE== answer.QUESTION_CODE).FirstOrDefault().rightChoose))
+                    {
+                        dogruCevap++;
+                    }
+                }
+
+              
+                quiz.GRADE = (dogruCevap * 100) / count;
+                db.USER_QUIZ_STATUSS.Attach(quiz);
+                db.Entry(quiz).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
         }
