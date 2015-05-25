@@ -1,9 +1,10 @@
-﻿@model IList<iys.Models.TreeListModelItem>
+@model IList<iys.Models.TreeListModelItem>
     @{
         ViewBag.Title = "index";
         Layout = "~/Views/Shared/_MainLayout.cshtml";
-    }
 
+    }
+   
 
     <script type="text/javascript">
         var courseValue = 0;
@@ -48,5 +49,6 @@
     </script>
 
     <div class="col-md-11">
+        <h2 class="title">Sorular</h2>
         @Html.Action("GridViewPartial")
     </div>

@@ -245,7 +245,7 @@
     <Content Include="Content\spinner.gif" />
     <Content Include="Content\Stil.css" />
     <Content Include="Content\style.css" />
-    <Content Include="Content\Video\VideoGallery.css" />
+    <Content Include="Content\VideoGallery.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -267,14 +267,17 @@
     <Content Include="images\slide.png" />
     <Content Include="images\test.png" />
     <Content Include="images\verticalMenu\assets.png" />
+    <Content Include="images\verticalMenu\book.png" />
     <Content Include="images\verticalMenu\comments.png" />
     <Content Include="images\verticalMenu\dashboard.png" />
+    <Content Include="images\verticalMenu\list.png" />
     <Content Include="images\verticalMenu\listBg.png" />
     <Content Include="images\verticalMenu\listSelectedBg.png" />
     <Content Include="images\verticalMenu\maps.png" />
     <Content Include="images\verticalMenu\pages.png" />
     <Content Include="images\verticalMenu\search.png" />
     <Content Include="images\verticalMenu\settings.png" />
+    <Content Include="images\verticalMenu\text-file.png" />
     <Content Include="images\verticalMenu\texture.png" />
     <Content Include="images\verticalMenu\trash.png" />
     <Content Include="images\verticalMenu\widgets.png" />
@@ -708,6 +711,7 @@
     <Content Include="Views\Education\Exam.cshtml" />
     <Content Include="Views\Questions\ExternalEditForm.cshtml" />
     <Content Include="Views\Questions\TreeList.cshtml" />
+    <Content Include="Views\Questions\Partial1.cshtml" />
     <Content Include="Views\Education\videoPartial.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\_DashboardViewerPartial.cshtml" />
@@ -755,7 +759,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>25204</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:25269/</IISUrl>
+          <IISUrl>http://localhost:25222/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

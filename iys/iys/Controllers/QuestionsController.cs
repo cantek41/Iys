@@ -21,6 +21,11 @@ namespace iys.Controllers
             return View();
         }
 
+        public ActionResult Partial1()
+        {
+            return PartialView("Partial1");
+        }
+
         iys.ModelProject.iysContext db = new iys.ModelProject.iysContext();
 
         [ValidateInput(false)]
@@ -301,5 +306,7 @@ namespace iys.Controllers
             //int courseID = (Request.Params["COURSE_CODE"] != null) ? int.Parse(Request.Params["COURSE_CODE"]) : -1;
             return PartialView(getDocument(COURSE_CODE, CHAPTER_CODE, lessonID));
         }
+
+
     }
 }
