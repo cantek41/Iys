@@ -1,7 +1,8 @@
 @Html.DevExpress().Chart(settings => {
     settings.Name = "Chart";
-    Series chartSeries = new Series("Series", DevExpress.XtraCharts.ViewType.Bar);
-    chartSeries.ArgumentDataMember = "CHOOSE";
-    chartSeries.ValueDataMembers[0] = "QUIZ_CODE";
+    Series chartSeries = new Series("Egitim", DevExpress.XtraCharts.ViewType.NestedDoughnut);
+    chartSeries.ArgumentDataMember = "name";
+    chartSeries.ValueDataMembers[0] = "puan";
+    chartSeries.Label.TextPattern = "{A}: {VP:P0}";
     settings.Series.Add(chartSeries);
 }).Bind(Model).GetHtml()

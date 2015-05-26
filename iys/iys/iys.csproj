@@ -208,12 +208,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
-    <Compile Include="Dashboard1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Dashboard1.Designer.cs">
-      <DependentUpon>Dashboard1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -714,8 +708,11 @@
     <Content Include="Views\Questions\Partial1.cshtml" />
     <Content Include="Views\Education\videoPartial.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Dashboard\_DashboardViewerPartial.cshtml" />
     <Content Include="Views\Dashboard\_ChartPartial.cshtml" />
+    <Content Include="Views\Dashboard\_dashboardPartial.cshtml" />
+    <Content Include="Views\Dashboard\_userInfoPartial.cshtml" />
+    <Content Include="Views\Dashboard\_calenderPartial.cshtml" />
+    <Content Include="Views\Dashboard\_successPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\Documents\" />
@@ -736,10 +733,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dashboard1.resx">
-      <DependentUpon>Dashboard1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

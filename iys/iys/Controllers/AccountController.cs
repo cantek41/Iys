@@ -76,12 +76,16 @@ namespace iys.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
             if (ModelState.IsValid)
             {
+                roleCreate();
                 var user = new ApplicationUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var currentUser = UserManager.FindByName(user.UserName);
+                    var roleresult = UserManager.AddToRole(currentUser.Id, "Student");
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -93,6 +97,25 @@ namespace iys.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+        public void roleCreate()
+        {
+           ApplicationDbContext db= new ApplicationDbContext();
+           string role = db.Roles.Where(x => x.Name == "Student").Select(x => x.Name).FirstOrDefault();
+           if (role==null)
+           {
+               RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext
+               ()));
+               var str = RoleManager.Create(new IdentityRole("Student"));
+           }
+           role = db.Roles.Where(x => x.Name == "Admin").Select(x => x.Name).FirstOrDefault();
+           if (role == null)
+           {
+               RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext
+               ()));
+               var str = RoleManager.Create(new IdentityRole("Admin"));
+           }
+           
         }
 
         //

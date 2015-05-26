@@ -7,6 +7,7 @@ using iys.ModelProject;
 
 namespace iys.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminPanelController : BaseController
     {
         //
@@ -35,13 +36,13 @@ namespace iys.Controllers
         }
         public ActionResult MasterDetailDetailPartial(string customerID)
         {
-            
-            ViewData["COURSE_CODE"] = customerID;           
-            int cID= Convert.ToInt32(customerID);
+
+            ViewData["COURSE_CODE"] = customerID;
+            int cID = Convert.ToInt32(customerID);
             iysContext db = new iysContext();
             var model = from d in db.CHAPTERS
-                        where d.COURSE_CODE==cID
-                        select d;          
+                        where d.COURSE_CODE == cID
+                        select d;
             return PartialView("MasterDetailDetailPartial", model.ToArray());
         }
     }

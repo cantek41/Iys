@@ -1,0 +1,66 @@
+﻿<div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.DevExpress().RoundPanel(settings =>
+                {
+                    settings.Name = "userInfo";
+                    settings.AllowCollapsingByHeaderClick = true;
+                    settings.ShowCollapseButton = true;
+                    settings.ShowHeader = true;
+                    settings.View = View.Standard;
+                    settings.EnableAnimation = true;
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.Height = 300;
+                    settings.HeaderText = "Kişisel Bilgiler";
+                    settings.SetContent(@Html.Action("userInfoPartial").ToString());
+                }).GetHtml()
+        </div>
+        <div class="col-md-4">
+            @Html.DevExpress().RoundPanel(settings =>
+                {
+                    settings.Name = "ChartPartial";
+                    settings.AllowCollapsingByHeaderClick = true;
+                    settings.ShowCollapseButton = true;
+                    settings.ShowHeader = true;
+                    settings.View = View.Standard;
+                    settings.EnableAnimation = true;
+                    settings.HeaderText = "Eğitim Cetveli";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.Height = 300;
+                    settings.SetContent(@Html.Action("ChartPartial").ToString());
+                }).GetHtml()
+        </div>
+        <div class="col-md-4">
+            @Html.DevExpress().RoundPanel(settings =>
+                {
+                    settings.Name = "calenderPartial";
+                    settings.AllowCollapsingByHeaderClick = true;
+                    settings.ShowCollapseButton = true;
+                    settings.ShowHeader = true;
+                    settings.View = View.Standard;
+                    settings.EnableAnimation = true;
+                    settings.HeaderText = "Eğitim Takvimi";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.Height = 300;
+                    settings.SetContent(@Html.Action("calenderPartial").ToString());
+                }).GetHtml()
+        </div>
+    </div>
+   
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.DevExpress().RoundPanel(settings =>
+                {
+                    settings.Name = "successPartial";
+                    settings.AllowCollapsingByHeaderClick = true;
+                    settings.ShowCollapseButton = true;
+                    settings.ShowHeader = true;
+                    settings.View = View.Standard;
+                    settings.EnableAnimation = true;
+                    settings.HeaderText = "Başarı Cetveli";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.SetContent(@Html.Action("successPartial").ToString());
+                }).GetHtml()
+    </div>
+</div>

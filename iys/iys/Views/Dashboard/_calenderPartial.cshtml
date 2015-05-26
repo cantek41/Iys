@@ -1,0 +1,8 @@
+﻿@Html.DevExpress().Chart(settings =>
+{
+    settings.Name = "ChartCalender";
+    Series chartSeries = new Series("Egitim", DevExpress.XtraCharts.ViewType.Area);
+    chartSeries.ArgumentDataMember = "name";
+    chartSeries.ValueDataMembers[0] = "puan";  
+    settings.Series.Add(chartSeries);
+}).Bind(Model).GetHtml()

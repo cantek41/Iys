@@ -1,15 +1,24 @@
 ﻿@{
     ViewBag.Title = "Index";
+    // Layout = null;
     Layout = "~/Views/Shared/_RootLayout.cshtml";
 }
+<div class="col-md-12" >
+    @Html.DevExpress().RoundPanel(settings =>
+                {
+                    settings.Name = "ANA";
+                    settings.AllowCollapsingByHeaderClick = true;
+                    settings.ShowCollapseButton = true;
+                    settings.ShowHeader = true;
+                    settings.View = View.GroupBox;
+                    settings.EnableAnimation = true;                    
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.HeaderText = "DURUM TABLOSU";
 
-@Html.Action("ChartPartial")
-
-
-@*@using (Html.BeginForm())
-{
-    @Html.Action("DashboardViewerPartial")
+                    settings.SetContent(@Html.Action("dashboardPartial").ToString());
+                }).GetHtml()
     
-}*@
+</div>
+
 
 
