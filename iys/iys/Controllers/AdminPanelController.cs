@@ -7,8 +7,7 @@ using iys.ModelProject;
 
 namespace iys.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class AdminPanelController : BaseController
+       public class AdminPanelController : AdminBaseController
     {
         //
         // GET: /AdminPanel/

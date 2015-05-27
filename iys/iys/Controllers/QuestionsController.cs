@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace iys.Controllers
 {
-    public class QuestionsController : BaseController
+    public class QuestionsController : AdminBaseController
     {
         //
         // GET: /Questions/

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -25,21 +26,18 @@ namespace iys.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
         public ActionResult Manege()
         {
-          //  string[] rolesArray = Roles. GetRolesForUser();
-            
-                      
-        //    IList<string> rol = UserManager.GetRoles(User.Identity.GetUserId());
-            //string[] rol=Roles.GetUsersInRole("Admin");
-           // string[] rol = r.GetRoles();
-            //if (rolesArray.Contains("Admin"))
-            //{
-            //    return RedirectToAction("index", "AdminPanel");
-            //}
-            //else
-            //{
-            //    return RedirectToAction("index", "Dashboard");
-            //}            
-            return RedirectToAction("index", "Dashboard");
+            IList<string> roles = ((ClaimsIdentity)User.Identity).Claims
+                .Where(c => c.Type == ClaimTypes.Role)
+                .Select(c => c.Value).ToList();       
+            if (roles.Contains("Admin"))
+            {
+                return RedirectToAction("index", "AdminPanel");
+            }
+            else
+            {
+                return RedirectToAction("index", "Dashboard");
+            }            
+           
         }
         public ActionResult About()
         {

@@ -102,6 +102,10 @@ namespace iys.Controllers
         {
            ApplicationDbContext db= new ApplicationDbContext();
            string role = db.Roles.Where(x => x.Name == "Student").Select(x => x.Name).FirstOrDefault();
+           if (role!=null)
+           {
+               return;
+           }
            if (role==null)
            {
                RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext
@@ -115,7 +119,16 @@ namespace iys.Controllers
                ()));
                var str = RoleManager.Create(new IdentityRole("Admin"));
            }
-           
+           var user = new ApplicationUser() { UserName = "Admin" };
+           var result = UserManager.Create(user, "1q2w3e");
+
+
+           //RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+           //UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+           //var str = RoleManager.Create(new IdentityRole("Student"));
+           //var adm = RoleManager.Create(new IdentityRole("Admin"));
+           //var user = new ApplicationUser() { UserName = "Admin" };
+           //var result = UserManager.Create(user, "1q2w3e");
         }
 
         //

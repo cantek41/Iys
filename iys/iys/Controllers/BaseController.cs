@@ -158,4 +158,12 @@ namespace iys.Controllers
         }
 
     }
+
+
+    
+    [Authorize(Roles="Admin")]
+    public class AdminBaseController : BaseController
+    {
+ 
+    }
 }
