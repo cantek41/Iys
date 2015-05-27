@@ -79,7 +79,7 @@ namespace iys.Controllers
 
             if (ModelState.IsValid)
             {
-                roleCreate();
+            
                 var user = new ApplicationUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -98,38 +98,7 @@ namespace iys.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-        public void roleCreate()
-        {
-           ApplicationDbContext db= new ApplicationDbContext();
-           string role = db.Roles.Where(x => x.Name == "Student").Select(x => x.Name).FirstOrDefault();
-           if (role!=null)
-           {
-               return;
-           }
-           if (role==null)
-           {
-               RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext
-               ()));
-               var str = RoleManager.Create(new IdentityRole("Student"));
-           }
-           role = db.Roles.Where(x => x.Name == "Admin").Select(x => x.Name).FirstOrDefault();
-           if (role == null)
-           {
-               RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext
-               ()));
-               var str = RoleManager.Create(new IdentityRole("Admin"));
-           }
-           var user = new ApplicationUser() { UserName = "Admin" };
-           var result = UserManager.Create(user, "1q2w3e");
-
-
-           //RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-           //UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-           //var str = RoleManager.Create(new IdentityRole("Student"));
-           //var adm = RoleManager.Create(new IdentityRole("Admin"));
-           //var user = new ApplicationUser() { UserName = "Admin" };
-           //var result = UserManager.Create(user, "1q2w3e");
-        }
+      
 
         //
         // POST: /Account/Disassociate
