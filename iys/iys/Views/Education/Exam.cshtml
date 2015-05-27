@@ -7,7 +7,14 @@
 }
 
 <style>
+    html {
+        overflow: visible !important;
+    }
     body {
+        overflow: visible !important;
+    }
+
+    #MainSplitter_0_CC {
         overflow: visible !important;
     }
 </style>
@@ -19,9 +26,9 @@
     });
 </script>
 
-<div style="margin-left: 2%;">
+<div class="col-md-8" style="margin-left: 2%;">
 
-    <h2 class="title">@ViewBag.ExamName</h2>
+    <h2 class="title" style="border-bottom:solid;padding-bottom:10px;margin-bottom:20px;">@ViewBag.ExamName</h2>
     @using (Html.BeginForm("ExamChoose", "Education"))
 {
     <div style="display:none">
@@ -40,7 +47,7 @@
 
             for (int j = 0; j < 5; j++)
             {
-                <div style="margin-left:1%;">
+                <div class="row" style="margin-left:1%;">
                     <label>@Html.RadioButton(@item.QUESTION_CODE.ToString(), @siklar[j])</label>
                     <label class="sub-title">@siklar[j])</label>
                     <label class="question">
@@ -65,19 +72,20 @@
                                 break;
                         }
                     </label>
+                    
                 </div>
-
+        
             }
-
+      
         }
-
+    <div style="margin-top:20px;"></div>
         @Html.DevExpress().Button(settings =>
    {
        settings.Name = "btnGonder";
        settings.Text = "Gönder";
        settings.UseSubmitBehavior = true;
    }).GetHtml()
-
+       
 
     }
 
