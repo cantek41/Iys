@@ -1,201 +1,199 @@
 body {
-	margin: 0;
-	padding: 0;
-	background: #f3f3f3;
+    margin: 0;
+    padding: 0;
+    background: #f3f3f3;
 }
 
 .clear {
-	clear: both;
+    clear: both;
 }
 
 .sidebar {
-	background: #1c1c1c;
-	border-right: 1px solid #404040;
-	height: 100%;
-	position: relative;
-	float: left;
+    background: #1c1c1c;
+    border-right: 1px solid #404040;
+    height: 100%;
+    position: relative;
+    float: left;
 }
 
 .navContiner {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 100;
-	height: 900px;
-	background: #2b2b2b url(../images/verticalMenu/listBg.png) repeat-x bottom;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 900px;
+    background: #2b2b2b url(../images/verticalMenu/listBg.png) repeat-x bottom;
 }
 
 .flyoutBg {
-	width: 150px;
-	height: 900px;
-	background: url(../images/verticalMenu/texture.png);
-	position: absolute;
-	top: 0;
-	left: 25px;
-	border-left: 1px solid #1c1c1c;
+    width: 150px;
+    height: 900px;
+    background: url(../images/verticalMenu/texture.png);
+    position: absolute;
+    top: 0;
+    left: 25px;
+    border-left: 1px solid #1c1c1c;
 }
 
 .notification {
-	position: absolute;
-	background: url(../images/verticalMenu/listSelectedBg.png) repeat-x top;
-	font-size: 11px;
-	color: #fff;
-	padding: 2px 5px;
-	top:-10px;
-	right: -10px;
-	display: block;
-	border: 1px solid #212121;
-	
-	border-radius: 30px;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
+    position: absolute;
+    background: url(../images/verticalMenu/listSelectedBg.png) repeat-x top;
+    font-size: 11px;
+    color: #fff;
+    padding: 2px 5px;
+    top: -10px;
+    right: -10px;
+    display: block;
+    border: 1px solid #212121;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
 }
 
 /**  Nav  **/
 
 ul#nav {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
 }
 
-ul#nav li {
-	background: url(../images/verticalMenu/listBg.png) repeat-x bottom;
-	width: 200px;
-	position: relative;
-	height: 48px;
-}
+    ul#nav li {
+        background: url(../images/verticalMenu/listBg.png) repeat-x bottom;
+        width: 200px;
+        position: relative;
+        height: 48px;
+    }
 
-ul#nav li a {
-	display: block;
-	font-family: Helvetica;
-	font-size: 10px;
-	color: #fff;
-	text-decoration: none;
-	text-transform: uppercase;
-	padding: 23px 23px 23px 75px;
-}
+        ul#nav li a {
+            display: block;
+            font-family: Helvetica;
+            font-size: 10px;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 23px 23px 23px 75px;
+        }
 
-ul#nav li:hover {
-	background: url(../images/verticalMenu/listSelectedBg.png) repeat-x bottom;
-}
+        ul#nav li:hover {
+            background: url(../images/verticalMenu/listSelectedBg.png) repeat-x bottom;
+        }
 
-ul#nav li a.egitim {
-	background: url(../images/verticalMenu/list.png) 35px 50% no-repeat;
-}
+        ul#nav li a.egitim {
+            background: url(../images/verticalMenu/list.png) 35px 50% no-repeat;
+        }
 
-ul#nav li a.pages {
-	background: url(../images/verticalMenu/pages.png) 35px 50% no-repeat;
-}
+        ul#nav li a.pages {
+            background: url(../images/verticalMenu/pages.png) 35px 50% no-repeat;
+        }
 
-ul#nav li a.assets {
-	background: url(../images/verticalMenu/assets.png) 35px 50% no-repeat;
-}
+        ul#nav li a.assets {
+            background: url(../images/verticalMenu/assets.png) 35px 50% no-repeat;
+        }
 
-ul#nav li a.dersler {
-	background: url(../images/verticalMenu/book.png) 35px 50% no-repeat;
-}
+        ul#nav li a.dersler {
+            background: url(../images/verticalMenu/book.png) 35px 50% no-repeat;
+        }
 
-ul#nav li a.belgeler {
-	background: url(../images/verticalMenu/text-file.png) 35px 50% no-repeat;
-}
+        ul#nav li a.belgeler {
+            background: url(../images/verticalMenu/text-file.png) 35px 50% no-repeat;
+        }
 
-ul#nav li a.settings {
-	background: url(../images/verticalMenu/settings.png) 35px 50% no-repeat;
-}
+        ul#nav li a.settings {
+            background: url(../images/verticalMenu/settings.png) 35px 50% no-repeat;
+        }
 
-ul#nav li a.maps {
-	background: url(../images/verticalMenu/maps.png) 35px 50% no-repeat;
-}
+        ul#nav li a.maps {
+            background: url(../images/verticalMenu/maps.png) 35px 50% no-repeat;
+        }
 
-ul#nav li a.trash {
-	background: url(../images/verticalMenu/trash.png) 35px 50% no-repeat;
-}
+        ul#nav li a.trash {
+            background: url(../images/verticalMenu/trash.png) 35px 50% no-repeat;
+        }
 
-ul#nav li a.search {
-	background: url(../images/verticalMenu/search.png) 35px 50% no-repeat;
-}
+        ul#nav li a.search {
+            background: url(../images/verticalMenu/search.png) 35px 50% no-repeat;
+        }
 
 
-/**  Nav Flyout  **/
+    /**  Nav Flyout  **/
 
-ul#nav ul.flyout {
-	position: absolute;
-	z-index: -10;
-	top: 0;
-	left: 25px;
-	padding: 0;
-	margin: 0;
-	width: 150px;
-}
+    ul#nav ul.flyout {
+        position: absolute;
+        z-index: -10;
+        top: 0;
+        left: 25px;
+        padding: 0;
+        margin: 0;
+        width: 150px;
+    }
 
-ul#nav li:hover ul.flyout li:first-child {
-	background: url(../images/verticalMenu/listSelectedBg.png) repeat-x bottom;
-}
+    ul#nav li:hover ul.flyout li:first-child {
+        background: url(../images/verticalMenu/listSelectedBg.png) repeat-x bottom;
+    }
 
-ul#nav ul.flyout li:first-child {
-	height: 58px;
-	margin: 0 0 15px 0;
-}
+    ul#nav ul.flyout li:first-child {
+        height: 58px;
+        margin: 0 0 15px 0;
+    }
 
-ul#nav ul.flyout li {
-	width: auto;
-	background: none;
-	list-style: none;
-	white-space: nowrap;
-	height: 30px;
-}
+    ul#nav ul.flyout li {
+        width: auto;
+        background: none;
+        list-style: none;
+        white-space: nowrap;
+        height: 30px;
+    }
 
-ul#nav ul.flyout li a {
-	padding: 0;
-	color: #cdcdcd;
-	text-transform: none;
-	font-size: 12px;
-	padding: 10px 35px;
-}
+        ul#nav ul.flyout li a {
+            padding: 0;
+            color: #cdcdcd;
+            text-transform: none;
+            font-size: 12px;
+            padding: 10px 35px;
+        }
 
-ul#nav ul.flyout li a:hover {
-	color: #ffffff;
-}
+            ul#nav ul.flyout li a:hover {
+                color: #ffffff;
+            }
 
 .title {
-
     font-size: 20px;
     color: #ef6f08;
     font-weight: bold;
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
 .sub-title {
-
     font-size: 12px;
     color: #ef6f08;
     font-weight: bold;
-    margin-bottom:5px;
+    margin-bottom: 5px;
+    line-height: 12px;
 }
 
-.question{
+.question {
     font-family: 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     color: #999;
-    font-weight:bold;
+    font-weight: bold;
+    line-height: 12px;
 }
 
 .tablom {
-    
-    -moz-border-radius:8px;
-    -webkit-border-radius:8px;
-    border-radius:8px;
-    border:solid;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: solid;
     border-collapse: separate;
-    color:#ababab;
-    padding:5px;
-   
+    color: #ababab;
+    padding: 5px;
 }
 
-.divider{
- 
-    border-left:1px solid #999;
-    padding-left:20px;
+.divider {
+    border-left: 1px solid #999;
+    padding-left: 20px;
 }
+
+
