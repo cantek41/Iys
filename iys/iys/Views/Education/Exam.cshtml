@@ -5,19 +5,21 @@
     ViewBag.Title = "Exam";
     Layout = "~/Views/Shared/_RootLayout.cshtml";
 }
-<link href="~/Content/style.css" rel="stylesheet" />
+
 <style>
     body {
-    overflow:visible;
+        overflow: visible !important;
     }
 </style>
+<link href="~/Content/style.css" rel="stylesheet" />
+
 <script>
     $(document).ready(function () {
         $('.leftPanel').hide();
     });
 </script>
 
-<div style=" margin-left: 2%; overflow:visible">
+<div style="margin-left: 2%;">
 
     <h2 class="title">@ViewBag.ExamName</h2>
     @using (Html.BeginForm("ExamChoose", "Education"))

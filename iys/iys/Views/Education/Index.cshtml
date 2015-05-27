@@ -18,10 +18,17 @@
       <div ng-app="content">
         <div id="content" ng-controller="c_content">           
             <div ng-bind-html-unsafe="icerik"></div>
-            <input  name="documenCode" ng-value="documenCode" />
+            <div style="display: none"><input name="documenCode" ng-value="documenCode" /></div>
         </div>
     </div> 
-      <div><input type="submit" value=" Sınava Git" /></div>
+      <div style="margin-top:20px;">
+    @Html.DevExpress().Button(settings =>
+   {
+       settings.Name = "btnSinavaGit";
+       settings.Text = "Sınava Git";
+       settings.UseSubmitBehavior = true;
+   }).GetHtml()
+    </div>
   }
     
   
