@@ -1,4 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
+<style>
+    .link {
+        text-align: right;
+        font-family: Tahoma,Geneva,sans-serif;
+        font-size: 12px;
+    }
+</style>
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -6,13 +13,13 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            <li> <a href="@Url.Action("changeLanguage", "Base", new { lang ="TR"})"><img src="http://atommucizesi.imanisiteler.com/images/trBayrak.png" /></a></li>
-            <li><a href="@Url.Action("changeLanguage", "Base", new { lang ="EN"})"><img src="http://atommucizesi.imanisiteler.com/images/engBayrak.png" /></a></li>
-            <li><a class="header-yazi-ozellik" href="javascript:document.getElementById('logoutForm').submit()">Çıkış</a></li>
+            @*<li> <a href="@Url.Action("changeLanguage", "Base", new { lang ="TR"})"><img src="http://atommucizesi.imanisiteler.com/images/trBayrak.png" /></a></li>
+            <li><a href="@Url.Action("changeLanguage", "Base", new { lang ="EN"})"><img src="http://atommucizesi.imanisiteler.com/images/engBayrak.png" /></a></li>*@
+            <li><a class="header-yazi-ozellik" href="javascript:document.getElementById('logoutForm').submit()">ÇIKIŞ</a></li>
 
             @*@if (Roles.IsUserInRole("Admin"))
             {*@
-                <li>@Html.ActionLink("Yönet", "Manege", "Home")</li>
+                <li>@Html.ActionLink("YÖNET", "Manege", "Home", new {@class="link" })</li>
             @*}
             else
             {
@@ -31,10 +38,10 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li> <a href="@Url.Action("changeLanguage", "Base", new { lang ="TR"})"><img src="http://atommucizesi.imanisiteler.com/images/trBayrak.png" /></a></li>
-        <li><a href="@Url.Action("changeLanguage", "Base", new { lang ="EN"})"><img src="http://atommucizesi.imanisiteler.com/images/engBayrak.png" /></a></li>
-        <li> <a class=" header-yazi-ozellik sol-border" href="/Account/Register" id="registerLink">Kayıt Ol</a></li>
-        <li> <a class="header-yazi-ozellik" href="/Account/Login" id="loginLink">Giriş Yap</a></li>
+        @*<li> <a href="@Url.Action("changeLanguage", "Base", new { lang ="TR"})"><img src="http://atommucizesi.imanisiteler.com/images/trBayrak.png" /></a></li>
+        <li><a href="@Url.Action("changeLanguage", "Base", new { lang ="EN"})"><img src="http://atommucizesi.imanisiteler.com/images/engBayrak.png" /></a></li>*@
+        <li> <a class=" header-yazi-ozellik sol-border link" href="/Account/Register" id="registerLink">KAYIT OL</a></li>
+        <li> <a class="header-yazi-ozellik link" href="/Account/Login" id="loginLink">GİRİŞ</a></li>
 
     </ul>
 }

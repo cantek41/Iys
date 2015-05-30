@@ -4,61 +4,75 @@
     ViewBag.Title = "Log in";
 }
 
-<h2 style="margin-left:145px;">Giriş Bölümü</h2>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-4">
-        <div class="col-md-10">
-            <section id="loginForm">
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <h4>Yerel Bir Kullanıcı Adı İle Giriş Yapın</h4>
-                    <hr />
-                    @Html.ValidationSummary(true)
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 " })
-                        <div class="col-md-6">
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.UserName)
+<style>
+    body {
+        text-align: justify;
+        font-family: Tahoma,Geneva,sans-serif !important;
+        font-size: 12px;
+    }
+</style>
+<div class="container">
+    <div class="col-md-6">
+        <div class="col-md-12">
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <b style="font-size:14px">Yerel bir kullanıcı adı ile giriş yapın.</b>
+                <hr />
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.UserName)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.Password)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-4"></div>
+                    <div class=" col-md-6">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)<b>Beni Hatırla</b>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-3 " })
-                        <div class="col-md-6">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password)
-                        </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-4"></div>
+                    <div class=" col-md-6">
+                        <input type="submit" value="GİRİŞ" class="btn btn-default" style="font-family:Tahoma,Geneva,sans-serif;font-weight:bold"/>
                     </div>
-                    <div class="form-group">
-                        <div class=" col-md-10" style="margin-left:107px;">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
-                            </div>
-                        </div>
+                </div>
+                
+                <div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-6">@Html.ActionLink(" Kayıt Olun", "Register")
                     </div>
-                    <div class="form-group">
-                        <div class=" col-md-10">
-                            <input type="submit" value="Giriş Yap" class="btn btn-default"style="margin-left:107px;" />
-                        </div>
-                    </div>
-                    <p style="margin-left:107px;">
-                        Kullanıcı Adınız Yoksa
-                        @Html.ActionLink(" Kayıt Olun", "Register")
-                    </p>
-                }
-            </section>
+                </div>
+                
+            }
         </div>
         <div class="col-md-2"></div>
-        
+
     </div>
     @*<div class="col-md-8">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>*@
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

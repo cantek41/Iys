@@ -5,17 +5,6 @@
 
 <script type="text/javascript" src="/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="/scripts/jquery.cycle.min.js"></script>
-@*<script type="text/javascript">
-        $(function () {
-            $('#featured_slide').after('<div id="fsn"><ul id="fs_pagination">').cycle({
-                timeout: 5000,
-                fx: 'fade',
-                pager: '#fs_pagination',
-                pause: 1,
-                pauseOnPagerHover: 0
-            });
-        });
-    </script>*@
 <!-- ####################################################################################################### -->
 <style>
     .dxisControl .dxis-itemTextArea {
@@ -54,7 +43,7 @@
 
         .dxisControl .dxis-nbDotsBottom .dxis-nbSlidePanel {
             left: 420px !important;
-            border-top-style:none !important;
+            border-top-style: none !important;
         }
 
     .isdemoH3 {
@@ -65,27 +54,26 @@
 
     .vertOptionsPanel label {
         width: 200px;
-
     }
 
     .paragraf {
-    text-align:justify;
-    font-family:Tahoma,Geneva,sans-serif;
-    font-size:12px;
-    
+        text-align: justify;
+        font-family: Tahoma,Geneva,sans-serif;
+        font-size: 12px;
     }
-
+  
 </style>
 
 <div style="background-color: #FFF">
     <div class="container">
-        <div class="content">
+        <div class="col-md">
             @Html.DevExpress().ImageSlider(
             settings =>
             {
                 settings.Name = "imageSlider";
                 settings.EnableTheming = false;
-                settings.Width = System.Web.UI.WebControls.Unit.Pixel(962);
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                //settings.Width = System.Web.UI.WebControls.Unit.Pixel(962);
                 settings.Height = System.Web.UI.WebControls.Unit.Pixel(313);
                 settings.NavigateUrlFormatString = "javascript:void({0});";
 
@@ -183,8 +171,8 @@
                 </div>
             </div>
 
-           <!--İş Güvenliği-->
-             <div class="col-sm-4">
+            <!--İş Güvenliği-->
+            <div class="col-sm-4">
                 <div class="thumbnail">
                     <img src="~/Content/Images/ekipman.jpg" alt="...">
                     <div class="caption paragraf">
@@ -202,7 +190,7 @@
                     <div class="caption paragraf">
                         <h3>İletişim Bilgilerimiz</h3>
                         <p>İzmit Mesleki ve Teknik Anadolu Lisesi</p>
-                        <p>Karabaş Mahallesi Atatürk Caddesi No:1 41040 İzmit/KOCAELİ</p>
+                        <p>Karabaş Mahallesi Atatürk Caddesi No:1 41040 İzmit / KOCAELİ</p>
                         <p>Tel: 0 262 321 13 80</p>
                         <p>Fax: 0 262 331 16 69</p>
                         <p><a href="#" class="btn btn-default" role="button">Button</a></p>
@@ -210,15 +198,15 @@
                 </div>
             </div>
 
-            
+
 
 
         </div>
-       
 
-            </div>
-        </div>
-        <br class="clear" />
+
+    </div>
+</div>
+<br class="clear" />
     </div>
 </div>
 <!-- ####################################################################################################### -->
@@ -253,56 +241,5 @@
 
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        @*<div class="box1">
-                <h2> Metiskop</h2>
-
-                <img class="imgl" style="border-width:0px;" src="~/img/logo-kafa.png"  />
-                <p>Projemizin genel hedefi İzmit Teknik ve Endüstri Meslek Lisesi meslek dersleri öğretmen niteliklerini ve iş güvenliği konusunda eğitim verebilme kalitelerini yükseltmek, bunu tüm öğrencilerimize yaygınlaştirmak, İs güvenliği konusunda tam donanımlı uzmanlar yetiştirmek ve is güvenliği kazalarını en aza indirmektir.</p>
-
-            </div>
-            <div class="box contactdetails">
-                <h2> İletişim Bilgilerimiz</h2>
-                <ul>
-                    <li>İzmit MEsleki Ve Tekink Anadolu Lisesi</li>
-                    <li>Karabaş Mah.</li>
-                    <li>Kocaeli</li>
-                    <li>41100</li>
-                    <li>Tel: 0262 321 18 18</li>
-                    <li>Fax: 0262 321 11 11</li>
-                    <li class="last">LinkedIn: <a href="#">Company Profile</a></li>
-                </ul>
-            </div>
-            <div class="box flickrbox">
-                <h2>   İş Güvenliği Resimleri</h2>
-                <div class="wrap">
-                    <div class="fix"></div>
-
-
-                    <div class="flickr_badge_image" id="flickr_badge_image1"><a href="#"><img src="http://www.hancivata.com/image/cache/data/is_guvenlik/yangintup-80x80.jpg" /></a></div>
-                    <div class="flickr_badge_image" id="flickr_badge_image2"><a href="#"><img src="http://www.hirdavatcenter.com/image/cache/data/products/3m/3m-h700ngu-80x80.jpg" /></a></div>
-                    <div class="flickr_badge_image" id="flickr_badge_image3"><a href="#"><img src="http://shop.wurth.com.tr/images/thumb/0899/089940217396-is-guvenligi.png" alt="" /></a></div>
-                    <div class="flickr_badge_image" id="flickr_badge_image4"><a href="#"><img src="http://ucercevre.com.tr/image/cache/data/100X-20122211365_esnek_trafik_konisi-80x80.jpg" alt="" /></a></div>
-                    <div class="flickr_badge_image" id="flickr_badge_image5"><a href="#"><img src="http://isguvenligitabelasi.com/image/cache/data/Kategori_Resimleri/is_elbisesi-80x80.jpg" alt="" /></a></div>
-                    <div class="flickr_badge_image" id="flickr_badge_image6"><a href="#"><img src="http://www.alsonyangin.com/content/images/levha/is_guvenlik_yasak_s.jpg" alt="" /></a></div>
-                    <div class="fix"></div>
-                </div>
-            </div>
-            <br class="clear" />*@
     </div>
 </div>

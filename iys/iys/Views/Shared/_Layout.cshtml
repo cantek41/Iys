@@ -16,6 +16,12 @@ if (document.getElementById('content').scrollHeight < document.body.clientHeight
     <script src="~/Scripts/jquery.cycle.min.js"></script>*@
     @*<script src="@Url.Content("~/Scripts/jquery-1.11.2.min.js")" type="text/javascript"></script>*@
     <!-- The DevExpress ASP.NET MVC Extensions' scripts -->
+
+    <style>
+        a:hover {
+            text-decoration: none !important;
+        }
+    </style>
     @Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
@@ -49,98 +55,38 @@ if (document.getElementById('content').scrollHeight < document.body.clientHeight
 
 </head>
 
-@*<body>
-        <div class="navbar navbar-inverse navbar-fixed-top navbar-ozellik">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Metiskop", "Index", "Home", null, new { @class = "navbar-brand header-yazi-ozellik sol-border" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
 
-                            <li><center>@Html.ActionLink("Home", "Index", "Home", new { @class = "navbar-brand header-yazi-ozellik header-padding " }) </center> </li>
-                            <li><center> @Html.ActionLink("About", "About", "Home", new { @class = "navbar-brand header-yazi-ozellik header-padding" }) </center></li>
-                            <li><center> @Html.ActionLink("Contact", "Contact", "Home", new { @class = "navbar-brand header-yazi-ozellik header-padding" })  </center></li>
-
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p class="footer-yazi-ozellik">&copy; @DateTime.Now.Year - Metiskop</p>
-            </footer>
-        </div>
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>*@
-
-<body id="top"style="background-color: #f3f2f2;">
+<body id="top">
 
     <!-- ####################################################################################################### -->
 
-    <div style="background-color:#f3f2f2">
+    <div >
         <center>
-            <img style="margin-top:10px;margin-bottom:10px; " src="~/img/ab.png" />
+            <img style="margin-bottom:10px; " src="~/img/ab.png" />
         </center>
 
     </div>
-
-
-    
 
 
                 <div class="wrapper col1" style="background-color: #000000">
                     <div id="header">
                         <div id="topnav">
                             @Html.Partial("_LoginPartial")
-                            <ul>
-                                @*<li class="last"><a href="#">Link text</a><span>Test Text Here</span></li>
-                                    <li>
-                                        <a href="#">DropDown</a><span>Test Text Here</span>
-                                        <ul>
-                                            <li><a href="#">Link 1</a></li>
-                                            <li><a href="#">Link 2</a></li>
-                                            <li><a href="#">Link 3</a></li>
-                                        </ul>
-                                    </li>*@
-                                @*<li><a href="pages/full-width.html">Full Width</a><span>Test Text Here</span></li>
-                                    <li><a href="pages/style-demo.html">Style Demo</a><span>Test Text Here</span></li>
-                                    <li class="active"><a href="index.html">Homepage</a><span>Test Text Here</span></li>*@
-
-
-
-                                @*<li><center>@Html.ActionLink("Home", "Index", "Home") </center> </li>
-                                    <li><center> @Html.ActionLink("About", "About", "Home") </center></li>
-                                    <li><center> @Html.ActionLink("Contact", "Contact", "Home")  </center></li>*@
-                            </ul>
                         </div>
-                        <div id="logo">
-                            @*<h1><a href="index.html"><strong>O</strong>st <strong>M</strong>agazine</a></h1>
-                                <p>Free Website Template</p>*@
+                        <div id="logo">                
                             <a href="../Home/Index"><img src="~/img/logo.png" style="width:300px; height:82px;" /></a>
-
-                            @*<img src="~/img/logo.png" style="width:300px; height:82px;" />*@
                         </div>
                         <br class="clear" />
                     </div>
                 </div>
-                <!-- ####################################################################################################### -->
+            
                 @RenderBody()
-                <!-- ####################################################################################################### -->
+               
                 <footer>
                     <div class="wrapper col5" style="bottom: 0;position:fixed;">
                         <div id="copyright">
-                            <p class="fl_left">Copyright &copy; 2015 - Metiskop - <a href="#">İzmit Mesleki ve Teknik Anadolu Lisesi</a></p>
+                            <span class="fl_left">Copyright &copy; 2015 - Metiskop -</span> 
+                            <a href="#" style="text-decoration:none">İzmit Mesleki ve Teknik Anadolu Lisesi</a></span>
                             <a target="_blank" style="float:right; text-decoration:none;" href="http://www.veribis.com.tr/" title="Free Website Templates">Veribis CRM</a>
                             <br class="clear" />
                         </div>
