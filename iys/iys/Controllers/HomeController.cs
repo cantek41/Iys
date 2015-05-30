@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using iys.Content;
 using iys.ModelProject;
 using iys.Models;
 using Microsoft.AspNet.Identity;
@@ -15,8 +16,8 @@ namespace iys.Controllers
     public class HomeController : BaseController
     {
         public ActionResult Index()
-        {       
-
+        {
+            ViewData["Options"] = new ImageSliderSlideShowDemoOptions();
             using (var ctx = new iysContext())
             {
                 return View();
