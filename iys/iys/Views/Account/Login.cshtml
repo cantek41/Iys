@@ -13,8 +13,6 @@
 </style>
 <div class="container">
     <div class="col-md-6">
-        <div class="col-md-12">
-
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
@@ -53,7 +51,7 @@
                 <div class="form-group">
                     <div class="col-md-4"></div>
                     <div class=" col-md-6">
-                        <input type="submit" value="GİRİŞ" class="btn btn-default" style="font-family:Tahoma,Geneva,sans-serif;font-weight:bold"/>
+                        <input type="submit" value="Giriş" class="btn btn-default" style="font-family:Tahoma,Geneva,sans-serif;font-weight:bold"/>
                     </div>
                 </div>
                 
@@ -68,12 +66,8 @@
         <div class="col-md-2"></div>
 
     </div>
-    @*<div class="col-md-8">
-            <section id="socialLoginForm">
-                @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
-            </section>
-        </div>*@
-</div>
+  
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
