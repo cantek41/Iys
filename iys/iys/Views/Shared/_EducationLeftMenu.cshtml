@@ -11,6 +11,9 @@
                 $scope.$apply(function () {
                     $scope.icerik = (data);
                     $scope.documenCode = e.node.name;
+                    $scope.checked = true;
+                    $scope.video = e.node.text;
+                    $scope.title = e.node.parent.text;
                 });
             },
             error: function (data) {

@@ -11,25 +11,48 @@
     $(document).ready(function () {
         $('.leftPanel').hide();
     });
+    function checkQuestion(s, e) {
+        var bool = false;
+        var count = $("#count").val();       
+        for (var j = 0; j < count; j++) {
+            var str = '#' + 'item_QUESTION_CODE_' + j.toString();
+            var name = $(str).val();
+            var radios = document.getElementsByName(name);
+            for (i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    bool = true;
+                }
+            }
+        }
+        if (!bool) {
+            $('.classmarker_content').show();
+            window.location.href = "#message";
+        } else {
+            $("#form").submit();
+        }
+    }
 </script>
 
 <div class="container">
+    <!--uyarı-->
+    <a name="message"></a>
     <div class="classmarker_content">
+
         <div class="classmarker_content_inner">
             <div class="clearheight30"></div>
             <div class="boxinline">
                 <div class="fail">
-                    <h4> Yanıtlamadığınız sorular mevcut!</h4>
+                    <h4>Yanıtlamadığınız sorular mevcut!</h4>
                     <div class="clearheight30"></div>
                     <div class="dotted"></div>
                     <p>Devam edebilmek için tüm soruları yanıtlamalısınız.</p>
                 </div>
             </div>
         </div>
-
     </div>
+    <!--/uyarı-->
     <h2 class="title-box">@ViewBag.ExamName</h2>
-    @using (Html.BeginForm("ExamChoose", "Education"))
+    @using (Html.BeginForm("ExamChoose", "Education", FormMethod.Post, new { id = "form" }))
     {
         <div style="display:none">
             @Html.TextBox("DOCUMENT_CODE", Model.ElementAt(0).DOCUMENT_CODE)
@@ -72,7 +95,6 @@
                                 break;
                         }
                     </label>
-
                 </div>
 
             }
@@ -80,13 +102,12 @@
         }
         <div style="margin-top:20px;"></div>
         @Html.DevExpress().Button(settings =>
-   {
-       settings.Name = "btnGonder";
-       settings.Text = "Testi Bitir";
-       settings.UseSubmitBehavior = true;
-   }).GetHtml()
+        {
+            settings.Name = "btnGonder";
+            settings.Text = "Testi Bitir";
+            settings.ClientSideEvents.Click = "function(s,e){checkQuestion(s,e);}";
+            //  settings.UseSubmitBehavior = true;
 
-
+        }).GetHtml()
     }
-
 </div>
