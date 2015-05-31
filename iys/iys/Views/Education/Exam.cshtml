@@ -5,7 +5,7 @@
     ViewBag.Title = "Exam";
     Layout = "~/Views/Shared/_RootLayout.cshtml";
 }
-<link href="~/Content/style.css" rel="stylesheet" />
+
 
 <script>
     $(document).ready(function () {
@@ -13,29 +13,139 @@
     });
 </script>
 
-<div class="col-md-8" style="margin-left: 2%;">
+<style>
+    .container {
+        width: 60%;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-    <h2 class="title" style="border-bottom:solid;padding-bottom:10px;margin-bottom:20px;">@ViewBag.ExamName</h2>
-    @using (Html.BeginForm("ExamChoose", "Education"))
-{
-    <div style="display:none">
-        @Html.TextBox("DOCUMENT_CODE", Model.ElementAt(0).DOCUMENT_CODE)
-        @Html.TextBox("count", Model.Count)
+    .qbox {
+        margin: 35px 4.28571% 10px 0px;
+        padding: 9px 2.85714% 5px;
+        background: transparent url("../../img/testgrad.gif") repeat-x scroll left top;
+        border: 1px solid #D0D2D2;
+        font-family: Tahoma,Geneva,sans-serif;
+        font-weight: bold;
+        font-size:14px;
+    }
+    .title-box {
+        font-size: 20px;
+        color: #ef6f08;
+        font-weight: bold;
+        margin: 35px 4.28571% 10px 0px;
+        padding: 30px 2.85714% 30px;
+        border-bottom: solid;
+        background: transparent url("../../img/grad_inline.gif") repeat-x scroll left bottom;
+        border: 1px solid #D0D2D2;
+    }
+
+    body {
+        font-family: Tahoma, Geneva, sans-serif !important;
+        font-size: 81.25%;
+        line-height: 1.3em;
+        color: #444;
+    }
+
+    .boxinline {
+        border: 1px solid #D0D2D2;
+        background: transparent url("../img/grad_inline.gif") repeat-x scroll left bottom;
+        margin: 0px 0px 20px;
+        padding: 8px 14px 30px 30px;
+        width: 76.2857%;
+    }
+
+    .fail {
+        background: transparent url("../../img/inline_xmark.gif") no-repeat scroll 100% 0px;
+        padding: 0px 0px 5px;
+    }
+
+    .classmarker_content {
+        background: #FFF none repeat scroll 0% 0%;
+        width: 60%;
+        max-width: 700px;
+        text-align: left;
+        margin-left:auto;
+        margin-right:auto;
+        /*eksik yanıt olunca görüntülenecek*/
+        display:normal;
+    }
+
+    .classmarker_content_inner {
+        padding-left: 2.14286%;
+        width: 95.7143%;
+    }
+
+    .clearheight30 {
+        clear: both;
+        height: 30px;
+        width: auto;
+    }
+
+    .dotted {
+        color: #FFF;
+        clear: both;
+        float: none;
+        height: 1px;
+        margin: 5px 30px 10px 0px;
+        border-bottom: 1px dotted #D2D2D2;
+    }
+
+    label {
+      line-height:20px;
+    }
+
+    
+
+    .sub-title {
+        font-size: 12px;
+        color: #ef6f08;
+        font-weight: bold;
+    }
+
+    .question {
+        font-size: 12px;
+        color: #444;
+    }
+
+
+</style>
+<div class="container">
+    <div class="classmarker_content">
+        <div class="classmarker_content_inner">
+            <div class="clearheight30"></div>
+            <div class="boxinline">
+                <div class="fail">
+                    <h4> Yanıtlamadığınız sorular mevcut!</h4>
+                    <div class="clearheight30"></div>
+                    <div class="dotted"></div>
+                    <p>Devam edebilmek için tüm soruları yanıtlamalısınız.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
-        
-    int i = 0;
-    foreach (var item in Model)
+    <h2 class="title-box">@ViewBag.ExamName</h2>
+    @using (Html.BeginForm("ExamChoose", "Education"))
     {
+        <div style="display:none">
+            @Html.TextBox("DOCUMENT_CODE", Model.ElementAt(0).DOCUMENT_CODE)
+            @Html.TextBox("count", Model.Count)
+        </div>
+
+        int i = 0;
+        foreach (var item in Model)
+        {
             @Html.Hidden("item_QUESTION_CODE_" + i.ToString(), @item.QUESTION_CODE)
             i = i + 1;
             char[] siklar = { 'A', 'B', 'C', 'D', 'E' };
 
-            <p class="question">@i) @Html.DisplayFor(model => item.questionText)</p>
+            <p class="qbox">@i) @Html.DisplayFor(model => item.questionText)</p>
 
             for (int j = 0; j < 5; j++)
             {
                 <div class="row" style="margin-left:1%;">
-                    <label>@Html.RadioButton(@item.QUESTION_CODE.ToString(), @siklar[j])</label>
+                    <label style="margin-top:2px;">@Html.RadioButton(@item.QUESTION_CODE.ToString(), @siklar[j])</label>
                     <label class="sub-title">@siklar[j])</label>
                     <label class="question">
                         @switch (j)
@@ -59,20 +169,20 @@
                                 break;
                         }
                     </label>
-                    
+
                 </div>
-        
+
             }
-      
+
         }
-    <div style="margin-top:20px;"></div>
+        <div style="margin-top:20px;"></div>
         @Html.DevExpress().Button(settings =>
    {
        settings.Name = "btnGonder";
-       settings.Text = "Gönder";
+       settings.Text = "Testi Bitir";
        settings.UseSubmitBehavior = true;
    }).GetHtml()
-       
+
 
     }
 

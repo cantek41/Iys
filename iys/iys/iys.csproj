@@ -284,6 +284,7 @@
     <Content Include="img\47.jpg" />
     <Content Include="img\ab.png" />
     <Content Include="img\content.png" />
+    <Content Include="img\inline_xmark.gif" />
     <Content Include="img\ikg.jpg" />
     <Content Include="img\ISG_Video.jpg" />
     <Content Include="img\kocaeli-sanayi-odasi.jpg" />
@@ -291,6 +292,7 @@
     <Content Include="img\logo-kafa.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\MEBlogo.jpg" />
+    <Content Include="img\testgrad.gif" />
     <Content Include="img\Türkiye_Cumhuriyeti_Çalışma_ve_Sosyal_Güvenlik_Bakanlığı_logosu.jpg" />
     <Content Include="img\veribis-crm-d553f9-w192.png" />
     <Content Include="index.html" />
