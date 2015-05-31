@@ -7,21 +7,7 @@
     <item Text="Dersler" NavigateUrl="~/Lesson/Index" ImageUrl="~/Content/images/icons/blank.png"/>
     <item Text="Belgeler" NavigateUrl="~/Document/Index" ImageUrl="~/Content/images/icons/cart.png"/>
     <item Text="Sorular" NavigateUrl="~/Questions/Index" ImageUrl="~/Content/images/icons/zoom.png"/>
-    <item Text="Cevap Ekle" NavigateUrl="~/Answer/Index" ImageUrl="~/Content/images/icons/time.png"/>
-    <item Text="Cevap Sonucu" NavigateUrl="~/AnswerResult/Index" ImageUrl="~/Content/images/icons/check.png"/>
 
     <!--<item Text="" NavigateUrl="http://www.veribis.com.tr/" ImageUrl="~/Content/images/logo/logoyazisi.png"/>-->
-  </group>
-  <group Text="Kursiyer">
-    <item Text="Eğitim İçeriği" NavigateUrl="~/AdminPanel/Index" ImageUrl="~/Content/images/icons/blank.png"/>
-    <item Text="Kurslar" NavigateUrl="~/Course/Index" ImageUrl="~/Content/images/icons/inbox.png"/>
-    <item Text="Bölümler" NavigateUrl="~/Chapter/Index" ImageUrl="~/Content/images/icons/offer.png"/>
-    <item Text="Dersler" NavigateUrl="~/Lesson/Index" ImageUrl="~/Content/images/icons/blank.png"/>
-    <item Text="Belgeler" NavigateUrl="~/Document/Index" ImageUrl="~/Content/images/icons/cart.png"/>
-    <item Text="Sorular" NavigateUrl="~/Questions/Index" ImageUrl="~/Content/images/icons/zoom.png"/>
-    <item Text="Cevap Ekle" NavigateUrl="~/Answer/Index" ImageUrl="~/Content/images/icons/time.png"/>
-    <item Text="Cevap Sonucu" NavigateUrl="~/AnswerResult/Index" ImageUrl="~/Content/images/icons/check.png"/>
-  </group>
-  
-  
+  </group> 
 </menu>
