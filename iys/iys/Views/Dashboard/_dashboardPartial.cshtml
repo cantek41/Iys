@@ -12,6 +12,13 @@
                     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
                     settings.Height = 300;
                     settings.HeaderText = "Kişisel Bilgiler";
+                    settings.Styles.Header.Height = System.Web.UI.WebControls.Unit.Pixel(35);
+                    settings.Styles.Header.BackColor = System.Drawing.Color.FromName("#00c0ef");
+                    settings.Styles.Header.ForeColor = System.Drawing.Color.FromName("#fff");
+                    settings.Styles.Header.Font.Size = 14;
+                    
+                   
+                    
                     settings.SetContent(@Html.Action("userInfoPartial").ToString());
                 }).GetHtml()
         </div>
@@ -27,6 +34,10 @@
                     settings.HeaderText = "Eğitim Cetveli";
                     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
                     settings.Height = 300;
+                    settings.Styles.Header.Height = System.Web.UI.WebControls.Unit.Pixel(35);
+                    settings.Styles.Header.BackColor = System.Drawing.Color.FromName("#0ca65a");
+                    settings.Styles.Header.ForeColor = System.Drawing.Color.FromName("#fff");
+                    settings.Styles.Header.Font.Size = 14;
                     settings.SetContent(@Html.Action("ChartPartial").ToString());
                 }).GetHtml()
         </div>
@@ -42,6 +53,10 @@
                     settings.HeaderText = "Eğitim Takvimi";
                     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
                     settings.Height = 300;
+                    settings.Styles.Header.Height = System.Web.UI.WebControls.Unit.Pixel(35);
+                    settings.Styles.Header.BackColor = System.Drawing.Color.FromName("#f39c12");
+                    settings.Styles.Header.ForeColor = System.Drawing.Color.FromName("#fff");
+                    settings.Styles.Header.Font.Size = 14;
                     settings.SetContent(@Html.Action("calenderPartial").ToString());
                 }).GetHtml()
         </div>
@@ -59,6 +74,10 @@
                     settings.View = View.Standard;
                     settings.EnableAnimation = true;
                     settings.HeaderText = "Başarı Cetveli";
+                    settings.Styles.Header.Height = System.Web.UI.WebControls.Unit.Pixel(35);
+                    settings.Styles.Header.BackColor = System.Drawing.Color.FromName("#f56954");
+                    settings.Styles.Header.ForeColor = System.Drawing.Color.FromName("#fff");
+                    settings.Styles.Header.Font.Size = 14;
                     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
                     settings.SetContent(@Html.Action("successPartial").ToString());
                 }).GetHtml()

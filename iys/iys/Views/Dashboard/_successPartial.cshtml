@@ -1,8 +1,12 @@
-﻿@Html.DevExpress().Chart(settings =>
+﻿
+@Html.DevExpress().Chart(settings =>
 {
     settings.Name = "successChart";
+   
     Series chartSeries = new Series("Puan Cetveli", DevExpress.XtraCharts.ViewType.Bar);
     chartSeries.ArgumentDataMember = "name";
     chartSeries.ValueDataMembers[0] = "puan";
+    
     settings.Series.Add(chartSeries);
+    settings.Width = 1000;
 }).Bind(Model).GetHtml()

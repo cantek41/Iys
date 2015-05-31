@@ -52,7 +52,7 @@
         margin-right:auto;
         box-sizing:padding-box !important;
         /*eksik yanıt olunca görüntülenecek*/
-        display:normal;
+        display:none;
 
     }
 

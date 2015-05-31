@@ -3,18 +3,26 @@
     // Layout = null;
     Layout = "~/Views/Shared/_RootLayout.cshtml";
 }
+
+
+
+
 <div class="col-md-12" >
     @Html.DevExpress().RoundPanel(settings =>
                 {
                     settings.Name = "ANA";
-                    settings.AllowCollapsingByHeaderClick = true;
-                    settings.ShowCollapseButton = true;
+                    settings.AllowCollapsingByHeaderClick = false;
+                    settings.ShowCollapseButton = false;
                     settings.ShowHeader = true;
-                    settings.View = View.GroupBox;
+                    settings.View = View.Standard;
                     settings.EnableAnimation = true;                    
                     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
                     settings.HeaderText = "DURUM TABLOSU";
-
+                    settings.ControlStyle.BackColor = System.Drawing.Color.FromName("#FFFFFF");
+                    settings.Styles.Header.Height = System.Web.UI.WebControls.Unit.Pixel(50);
+                    settings.Styles.Header.BackColor = System.Drawing.Color.FromName("#efd000");
+                    settings.Styles.Header.ForeColor = System.Drawing.Color.FromName("#fff");
+                    settings.Styles.Header.Font.Size = 20;
                     settings.SetContent(@Html.Action("dashboardPartial").ToString());
                 }).GetHtml()
     

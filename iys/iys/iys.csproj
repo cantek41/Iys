@@ -261,6 +261,7 @@
     <Content Include="images\demo\index.html" />
     <Content Include="images\fs_txt_trans_bg.png" />
     <Content Include="images\index.html" />
+    <Content Include="images\play-btn.png" />
     <Content Include="images\slide.png" />
     <Content Include="images\test.png" />
     <Content Include="images\verticalMenu\assets.png" />
