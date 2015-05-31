@@ -4,24 +4,100 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_EducationLayout.cshtml";
 }
+
 <script src="~/Scripts/angular.js"></script>
 <script>
     var content = angular.module('content', []);
     content.controller('c_content',['$scope', function ($scope) {      
     }]);
 </script>
-<div style="margin-left:2%">
 
-    <h2 class="title">Course Title >> Lesson Title</h2> 
-  @using (Html.BeginForm("Exam", "Education"))
+<style>
+    body {
+        font-family: Tahoma, Geneva, sans-serif !important;
+        font-size: 81.25%;
+        line-height: 1.3em;
+        color: #444;
+    }
+
+    ._container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .boxinline {
+        border: 1px solid #D0D2D2;
+        background: transparent url("../img/grad_inline.gif") repeat-x scroll left bottom;
+        margin: 0px 0px 20px;
+        padding: 8px 14px 30px 30px;
+        width: 60%;
+    }
+
+    .fail {
+      
+        padding: 0;
+    }
+
+    .classmarker_content {
+        width: 70%;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: padding-box !important;
+        /*eksik yanıt olunca görüntülenecek*/
+        display: normal;
+    }
+
+    .classmarker_content_inner {
+        /*padding-left: 2%;*/
+    }
+
+    .clearheight30 {
+        clear: both;
+        /*height: 30px;*/
+        width: auto;
+    }
+
+    .dotted {
+        color: #FFF;
+        clear: both;
+        float: none;
+        height: 1px;
+        margin: 5px 30px 10px 0px;
+        border-bottom: 1px dotted #D2D2D2;
+    }
+</style>
+<div class="_container">
+    <div class="classmarker_content" style="margin-left:0px;">
+        <div class="classmarker_content_inner">
+            <div class="clearheight30"></div>
+            <div class="boxinline">
+                <div class="fail">
+                    <h4> Course Title </h4>
+                    <div class="clearheight30"></div>
+                    <div class="dotted"></div>
+                    <p>Lesson Title</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+      @using (Html.BeginForm("Exam", "Education"))
   { 
       <div ng-app="content">
         <div id="content" ng-controller="c_content">           
             <div ng-bind-html-unsafe="icerik"></div>
-            <input  name="documenCode" ng-value="documenCode" />
+            <div style="display: none"><input name="documenCode" ng-value="documenCode" /></div>
         </div>
     </div> 
-      <div><input type="submit" value=" Sınava Git" /></div>
+      <div style="margin-top:20px;">
+    @Html.DevExpress().Button(settings =>
+   {
+       settings.Name = "btnSinavaGit";
+       settings.Text = "Sınava Git";
+       settings.UseSubmitBehavior = true;
+   }).GetHtml()
+    </div>
   }
     
   

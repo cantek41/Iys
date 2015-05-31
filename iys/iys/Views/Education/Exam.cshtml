@@ -5,40 +5,52 @@
     ViewBag.Title = "Exam";
     Layout = "~/Views/Shared/_RootLayout.cshtml";
 }
+<link href="~/Content/education.css" rel="stylesheet" />
+
 <script>
     $(document).ready(function () {
         $('.leftPanel').hide();
     });
 </script>
-<div class="col-md-6">
 
-    <h2 class="title">@ViewBag.ExamName</h2>
+<div class="container">
+    <div class="classmarker_content">
+        <div class="classmarker_content_inner">
+            <div class="clearheight30"></div>
+            <div class="boxinline">
+                <div class="fail">
+                    <h4> Yanıtlamadığınız sorular mevcut!</h4>
+                    <div class="clearheight30"></div>
+                    <div class="dotted"></div>
+                    <p>Devam edebilmek için tüm soruları yanıtlamalısınız.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <h2 class="title-box">@ViewBag.ExamName</h2>
     @using (Html.BeginForm("ExamChoose", "Education"))
     {
-        @Html.TextBox("DOCUMENT_CODE", Model.ElementAt(0).DOCUMENT_CODE)
-        @Html.TextBox("count",Model.Count)
+        <div style="display:none">
+            @Html.TextBox("DOCUMENT_CODE", Model.ElementAt(0).DOCUMENT_CODE)
+            @Html.TextBox("count", Model.Count)
+        </div>
+
         int i = 0;
         foreach (var item in Model)
         {
             @Html.Hidden("item_QUESTION_CODE_" + i.ToString(), @item.QUESTION_CODE)
             i = i + 1;
             char[] siklar = { 'A', 'B', 'C', 'D', 'E' };
-            <div class="col-md-12">
-                <p class="question">@i) @Html.DisplayFor(model => item.questionText)</p>
-            </div>
-            
-                                                             
+
+            <p class="qbox">@i) @Html.DisplayFor(model => item.questionText)</p>
+
             for (int j = 0; j < 5; j++)
             {
-                <div class="row">
-                    <div class="col-md-1">
-
-                        @Html.RadioButton(@item.QUESTION_CODE.ToString(), @siklar[j])
-                    </div>
-                    <div class="col-md-1">
-                        @siklar[j]
-                    </div>
-                    <div class="col-md-10">
+                <div class="row" style="margin-left:1%;">
+                    <label>@Html.RadioButton(@item.QUESTION_CODE.ToString(), @siklar[j])</label>
+                    <label class="sub-title">@siklar[j])</label>
+                    <label class="question">
                         @switch (j)
                         {
                             case 0:
@@ -59,14 +71,22 @@
                             default:
                                 break;
                         }
-                    </div>
+                    </label>
+
                 </div>
 
             }
 
         }
-        <input type="submit" value="Gönder" />
-    }
+        <div style="margin-top:20px;"></div>
+        @Html.DevExpress().Button(settings =>
+   {
+       settings.Name = "btnGonder";
+       settings.Text = "Testi Bitir";
+       settings.UseSubmitBehavior = true;
+   }).GetHtml()
 
+
+    }
 
 </div>

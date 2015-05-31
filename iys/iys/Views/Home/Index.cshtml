@@ -1,168 +1,211 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    iys.Content.ImageSliderSlideShowDemoOptions options = new iys.Content.ImageSliderSlideShowDemoOptions();
 }
 
 <script type="text/javascript" src="/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="/scripts/jquery.cycle.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $('#featured_slide').after('<div id="fsn"><ul id="fs_pagination">').cycle({
-            timeout: 5000,
-            fx: 'fade',
-            pager: '#fs_pagination',
-            pause: 1,
-            pauseOnPagerHover: 0
-        });
-    });
-</script>
+<!-- ####################################################################################################### -->
+<style>
+    .dxisControl .dxis-itemTextArea {
+        top: 17px !important;
+        left: 17px !important;
+        bottom: auto !important;
+        width: 285px !important;
+        padding: 15px 16px 21px !important;
+        color: #fff !important;
+        border-radius: 5px !important;
+        box-shadow: 0px 4px 0px rgba(50, 50, 50, 0.3) !important;
+        background-color: #333333 !important;
+        background-color: rgba(0, 0, 0, 0.75) !important;
+    }
 
-<div class="wrapper col2" style="background-color:#ded8d8">
-    <div id="featured_slide">
-        <div class="featured_box">
-            @*<div class="floater">
-                
-            </div>*@
-           
-            <img src="../img/slider2.jpg">
-        </div>
-        <div class="featured_box">
-            @*<div class="floater">
-                
-            </div>*@
-           
-            <img src="../img/1.jpg">
-            @*<img src="images/demo/930x375.gif" alt="" />*@
-            
-        </div>
-        <div class="featured_box">
-            @*<div class="floater">
-                
-            </div>*@
-           
-            <img src="../img/slider3.jpg" />
-        </div>
-        <div class="featured_box">
-            @*<div class="floater">
-                
-            </div>*@
-            
-            <img src="../img/slider4.jpg" />
-        </div>
-        <div class="featured_box">
-            <@*div class="floater">
-                
-            </div>*@
-            
-        <img src="../img/slider5.jpg" />
+        .dxisControl .dxis-itemTextArea a {
+            color: white;
+        }
+
+            .dxisControl .dxis-itemTextArea a:hover, a:focus {
+                text-decoration: underline;
+            }
+
+        .dxisControl .dxis-itemTextArea p {
+            color: #b0b0b0;
+        }
+
+        .dxisControl .dxis-itemTextArea > p {
+            margin-bottom: 0 !important;
+        }
+
+    .dxisControl .dxis-nbDotsBottom {
+        padding: 0 !important;
+        margin-top: -25px !important;
+    }
+
+        .dxisControl .dxis-nbDotsBottom .dxis-nbSlidePanel {
+            left: 420px !important;
+            border-top-style: none !important;
+        }
+
+    .isdemoH3 {
+        font-size: 28px !important;
+        color: white;
+        padding-bottom: 9px;
+    }
+
+    .vertOptionsPanel label {
+        width: 200px;
+    }
+
+    .paragraf {
+        text-align: justify;
+        font-family: Tahoma,Geneva,sans-serif;
+        font-size: 12px;
+    }
+  
+</style>
+
+<div style="background-color: #FFF">
+    <div class="container">
+        <div class="col-md">
+            @Html.DevExpress().ImageSlider(
+            settings =>
+            {
+                settings.Name = "imageSlider";
+                settings.EnableTheming = false;
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                //settings.Width = System.Web.UI.WebControls.Unit.Pixel(962);
+                settings.Height = System.Web.UI.WebControls.Unit.Pixel(313);
+                settings.NavigateUrlFormatString = "javascript:void({0});";
+
+                settings.SettingsImageArea.ImageSizeMode = ImageSizeMode.FillAndCrop;
+                settings.SettingsImageArea.NavigationButtonVisibility = ElementVisibilityMode.None;
+                settings.SettingsImageArea.ItemTextVisibility = ElementVisibilityMode.Always;
+                settings.SettingsImageArea.EnableLoopNavigation = true;
+                settings.SettingsNavigationBar.Mode = NavigationBarMode.Dots;
+
+                settings.SettingsSlideShow.AutoPlay = options.AutoPlay;
+                settings.SettingsSlideShow.Interval = options.Interval;
+                settings.SettingsSlideShow.PausePlayingWhenMouseOver = options.PausePlayingWhenMouseOver;
+                settings.SettingsSlideShow.PlayPauseButtonVisibility = options.PlayPauseButtonVisibility;
+                settings.SettingsSlideShow.StopPlayingWhenPaging = options.StopPlayingWhenPaging;
+
+                settings.Items.Add(
+                    item =>
+                    {
+                        item.ImageUrl = Url.Content("~/Content/Images/widescreen/slider1.jpg");
+                        item.NavigateUrl = "1";
+                        item.SetTextTemplateContent(
+                            "<h3 class='isdemoH3'>Faaliyetlerimiz</h3>" +
+                            "<p>Saha incelemelerine hem yurt içi hem yurt dışında devam ediyoruz.</p>"
+                        );
+                    }
+                );
+                settings.Items.Add(
+                    item =>
+                    {
+                        item.ImageUrl = Url.Content("~/Content/Images/widescreen/slider2.jpg");
+                        item.NavigateUrl = "2";
+                        item.SetTextTemplateContent(
+                            "<h3 class='isdemoH3'>Danimarka</h3>" +
+                            "<p>Saha incelerimizin bir ayağında Danimarka`daydık.</p>"
+                        );
+                    }
+                );
+                settings.Items.Add(
+                    item =>
+                    {
+                        item.ImageUrl = Url.Content("~/Content/Images/widescreen/slider3.jpg");
+                        item.NavigateUrl = "3";
+                        item.SetTextTemplateContent(
+                            "<h3 class='isdemoH3'>Metiskop</h3>" +
+                            "<p>Proje çalışmalarımıza başladık.</p>"
+                        );
+                    }
+                );
+                settings.Items.Add(
+                    item =>
+                    {
+                        item.ImageUrl = Url.Content("~/Content/Images/widescreen/slider4.jpg");
+                        item.NavigateUrl = "4";
+                        item.SetTextTemplateContent(
+                            "<h3 class='isdemoH3'>Proje Tanıtımı</h3>" +
+                            "<p>İzmit Ticaret Odası`ndaki toplantıda projemizi sunduk.</p>"
+                        );
+                    }
+                );
+                settings.Items.Add(
+                    item =>
+                    {
+                        item.ImageUrl = Url.Content("~/Content/Images/widescreen/slider5.jpg");
+                        item.NavigateUrl = "5";
+                        item.SetTextTemplateContent(
+                            "<h3 class='isdemoH3'>Fransa</h3>" +
+                            "<p>Paris`te saha incelerimizin bir diğer aşamasındayız.</p>"
+                        );
+                    }
+                );
+            }
+        ).GetHtml()
         </div>
     </div>
 </div>
+
+
 <!-- ####################################################################################################### -->
-<div class="wrapper col3"style="background-color: #ffffff;">
+
+
+<div style="background-color: #FFF">
     <div class="container">
-        <div class="content">
-            <div id="topstory">
-                
-                <ul>
-                    <li>
-                        
-                        <img src="~/img/ISG_Video.jpg" />
-                        <p>İş güvenliği</p>
-                        <p>İşverenler, işyerlerinde sağlıklı ve güvenli çalışma ortamının tesis edilmesi için gerekli önlemleri almakla yükümlüdürler.</p>
-                        <p>Bu amaçla, işverenler, çalışanları, yasal hak ve sorumlulukları konusunda bilgilendirmek, onların karşı karşıya bulundukları mesleki riskler ve bunlarla ilgili alınması gerekli tedbirler konusunda işyerlerinde iş sağlığı ve güvenliği eğitim programlarını hazırlamak, eğitimlerin düzenlemesini,çalışanların bu programlara katılmasını sağlamak ve verilecek eğitim için uygun yer, araç ve gereç temin etmekle yükümlüdürler" denilmektedir.</p>
-                        <p class="readmore"><a href="../Account/Login"> Eğitime Başla &raquo;</a></p>
-                    </li>
-                    <li>
-                        
-                        <img src="~/img/k_28153220_dsc_1026.jpg" />                        
-                        <p>İşverenler, işyerlerinde sağlıklı ve güvenli çalışma ortamının tesis edilmesi için gerekli önlemleri almakla yükümlüdürler.</p>
-                        <p>Bu amaçla, işverenler, çalışanları, yasal hak ve sorumlulukları konusunda bilgilendirmek, onların karşı karşıya bulundukları mesleki riskler ve bunlarla ilgili alınması gerekli tedbirler konusunda işyerlerinde iş sağlığı ve güvenliği eğitim programlarını hazırlamak, eğitimlerin düzenlemesini,çalışanların bu programlara katılmasını sağlamak ve verilecek eğitim için uygun yer, araç ve gereç temin etmekle yükümlüdürler" denilmektedir.</p>
-                        <p class="readmore"><a href="http://www.izmiteml.meb.k12.tr/">İzmit EML İncele &raquo;</a></p>
-                    </li>
-                    <li class="last">
-                        
+        <div class="row">
 
-                        <img src="~/img/T%c3%bcrkiye_Cumhuriyeti_%c3%87al%c4%b1%c5%9fma_ve_Sosyal_G%c3%bcvenlik_Bakanl%c4%b1%c4%9f%c4%b1_logosu.jpg" />
-                        <p style="margin-top:20px;">Hızlı sanayileşme ve teknolojik gelişmeler ile doğru orantılı olarak özellikle iş yerlerinde çalışan kişilerin güvenliği ile ilgili bazı sorunlar da açığa çıkmıştır. Bu sebeple bir takım önlemleri önceden alarak iş yerlerini güvenli hale getirmek gerekmekte olduğundan iş güvenliği oldukça önem kazanmıştır.</p>
-                        
-                        <p class="readmore"><a href="http://www.csgb.gov.tr/csgbPortal/csgb.portal">ÇSGB Hakkında &raquo;</a></p>
-                    </li>
-                </ul>
-                <br class="clear" />
-            </div>
-            <div id="latestnews">
-                <h2>Çalışmalarımız</h2>
-                <ul>
-                    <li>
-                        
-                        <div class="imgholder"><img src="~/img/2.jpg" alt="" /></div>
-                        <div class="latestnews">
-                            <h2>Yurt İçi Etkinliklerimiz </h2>
-                            <p>This is a W3C standards compliant free website template from <a href="http://www.projelerim.biz/Yurtici/index.html">OS Templates</a>. This template is distributed using a <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>, which allows you to use and modify the template for both personal and commercial use when you keep the provided credit links in the footer. For more CSS templates visit <a href="http://www.os-templates.com/">Free Website Templates</a>.</p>
-                            <p class="readmore"><a href="http://www.projelerim.biz/Yurtici/index.html">Detaylı İncele &raquo;</a></p>
-                        </div>
-                        <br class="clear" />
-                    </li>
-                    <li class="last">
-                        <div class="imgholder"><img src="~/img/47.jpg" alt="" /></div>
-                        <div class="latestnews">
-                            <h2>Danimarka Etkinliğimiz</h2>
-                            <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur pretium eu et ac vest penatibus id lacus parturpis. Maecenaset adipiscinia tellentum nullam velit et a convallis curabitae vitae laoreet niseros ligula sem sed susp en at.</p>
-                            <p class="readmore"><a href="http://www.projelerim.biz/danimarka/index.html">Detaylı İncele &raquo;</a></p>
-                        </div>
-                        <br class="clear" />
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="column">
-            <div class="sponsors">
+            <!--Metiskop-->
+            <div class="col-sm-4">
+                <div class="thumbnail">
 
-
-
-                <div class="box1">
-                    <h2> Metiskop</h2>
-
-                    <img class="imgl" style="border-width:0px;" src="~/img/logo-kafa.png" />
-                    <p>Projemizin genel hedefi İzmit Teknik ve Endüstri Meslek Lisesi meslek dersleri öğretmen niteliklerini ve iş güvenliği konusunda eğitim verebilme kalitelerini yükseltmek, bunu tüm öğrencilerimize yaygınlaştirmak, İs güvenliği konusunda tam donanımlı uzmanlar yetiştirmek ve is güvenliği kazalarını en aza indirmektir.</p>
-
+                    <center><a href="http://www.metiskop.com" target="_blank"><img src="~/img/logo-kafa.png" alt="..."></a></center>
+                    <div class="caption paragraf">
+                        <h3>Metiskop</h3>
+                        <p>Projemizin genel hedefi İzmit Teknik ve Endüstri Meslek Lisesi meslek dersleri öğretmen niteliklerini ve iş güvenliği konusunda eğitim verebilme kalitelerini yükseltmek, bunu tüm öğrencilerimize yaygınlaştirmak, İs güvenliği konusunda tam donanımlı uzmanlar yetiştirmek ve is güvenliği kazalarını en aza indirmektir.</p>
+                        @*<p><a href="#" class="btn btn-default" role="button">Devamını Oku</a></p>*@
+                    </div>
                 </div>
-
-                <div class="box contactdetails">
-                    <h2> İletişim Bilgilerimiz</h2>
-                    <ul>
-                        <li>İzmit Mesleki ve Teknik Anadolu Lisesi</li>
-                        <li>Karabaş Mahallesi Atatürk Caddesi   No:1 İzmit/KOCAELİ</li>
-                      
-                        <li>Posta Kodu / 41040</li>
-                        <li>Tel: 0 262 321 13 80</li>
-                        <li>Fax: 0 262 331 16 69</li>
-                        @*<li>Email: info@domain.com</li>*@
-                        @*<li class="last">LinkedIn: <a href="#">Company Profile</a></li>*@
-                    </ul>
-                </div>
-                
-               
-                @*<div class="b_250" style="border-width:0px;"><a href="#"><img src="~/img/ab.png"  /></a></div>
-                <div class="b_125">
-                    <ul>
-
-                        
-                        <li><a href="#"><img src="~/img/MEBlogo.jpg"  alt="" /></a></li>
-                        <li><a href="#"><img src="~/img/ikg.jpg" /></a></li>
-                        <li><a href="#"><img src="http://www.coopersafety.com/showimage.axd?imgid=912&h=125&w=214" /></a></li>
-                         <li><a href="#"><img src="~/img/kocaeli-sanayi-odasi.jpg" /></a></li>
-                        <li><a href="#"><img src="~/img/11.jpg" /></a></li>
-                         <li class="last"><a href="#"><img src="http://www.engelsizkitap.com/images/banner_1.gif" /></a></li>
-                      
-                        
-                        
-                    </ul>
-                    <div class="clear"></div>
-                </div>*@
             </div>
+
+            <!--İş Güvenliği-->
+            <div class="col-sm-4">
+                <div class="thumbnail" style="min-height:280px">
+                    <img src="~/Content/Images/ekipman.jpg" alt="...">
+                    <div class="caption paragraf">
+                        <h3>İş Güvenliği</h3>
+                        <p>Dünyada ve Türkiye’de meydana gelen hızlı sanayileşme ve teknolojik gelişmeler ile doğru orantılı olarak özellikle iş yerlerinde çalışan kişilerin güvenliği ile ilgili bazı sorunlar da açığa çıkmıştır. Bu sebeple bir takım önlemleri önceden alarak iş yerlerini güvenli hale getirmek gerekmekte olduğundan iş güvenliği önem kazanmıştır.</p>
+                        @*<p><a href="#" class="btn btn-default" role="button">Devamını Oku</a></p>*@
+                    </div>
+                </div>
+            </div>
+
+            <!--İletişim Bilgileri-->
+            <div class="col-sm-4">
+                <div class="thumbnail" style="min-height:280px">
+                    <img src="~/Content/Images/okul_logo.jpg" alt="...">
+                    <div class="caption paragraf">
+                        <h3>İletişim Bilgilerimiz</h3>
+                        <p>İzmit Mesleki ve Teknik Anadolu Lisesi</p>
+                        <p>Karabaş Mh. Atatürk Cd. No:1 41040 <br />İzmit / Kocaeli</p>
+                        <p>Tel: 0 262 321 13 80</p>
+                        <p>Fax: 0 262 331 16 69</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
         </div>
-        <br class="clear" />
+
+
+    </div>
+</div>
+<br class="clear" />
     </div>
 </div>
 <!-- ####################################################################################################### -->
@@ -170,83 +213,32 @@
     <div id="footer" style="background-color:#ffffff;">
 
 
-      
 
-        <div class="col-md-4"style="float:right" >
+
+        <div class="col-md-4" style="float:right">
 
             <a style="float:left;" href="#"><img src="~/img/MEBlogo.jpg" alt="" /></a>
 
         </div>
 
-        <div class="col-md-4" >
+        <div class="col-md-4">
             <center>
                 <a style="float:right;" href="#"><img src="~/img/ikg.jpg" /></a>
             </center>
 
         </div>
 
-        <div class="col-md-4" >
+        <div class="col-md-4">
             <center>
-                <a  href="#"><img src="~/img/T%c3%bcrkiye_Cumhuriyeti_%c3%87al%c4%b1%c5%9fma_ve_Sosyal_G%c3%bcvenlik_Bakanl%c4%b1%c4%9f%c4%b1_logosu.jpg" alt="" /></a>
+                <a href="#"><img src="~/img/T%c3%bcrkiye_Cumhuriyeti_%c3%87al%c4%b1%c5%9fma_ve_Sosyal_G%c3%bcvenlik_Bakanl%c4%b1%c4%9f%c4%b1_logosu.jpg" alt="" /></a>
             </center>
 
         </div>
-       
-       <div class="col-md-12">
-           <span style="color:#000000; "> Bu yayın Avrupa Birliği ve Türkiye Cumhuriyeti’nin mali katkısıyla hazırlanmıştır. Bu yayının içeriğinden yalnızca İzmit Mesleki ve Teknik Anadolu Lisesi sorumludur ve bu içerik hiçbir şekilde Avrupa Birliği veya Türkiye Cumhuriyeti’nin görüş ve tutumunu yansıtmamaktadır.</span>
 
-       </div>
-       
-           
+        <div class="col-md-12">
+            <span style="color:#000000; "> Bu yayın Avrupa Birliği ve Türkiye Cumhuriyeti’nin mali katkısıyla hazırlanmıştır. Bu yayının içeriğinden yalnızca İzmit Mesleki ve Teknik Anadolu Lisesi sorumludur ve bu içerik hiçbir şekilde Avrupa Birliği veya Türkiye Cumhuriyeti’nin görüş ve tutumunu yansıtmamaktadır.</span>
 
-        
-         
-
-
-
-        
-
-
-
-
-
-
-
-
-        @*<div class="box1">
-            <h2> Metiskop</h2>
-            
-            <img class="imgl" style="border-width:0px;" src="~/img/logo-kafa.png"  />
-            <p>Projemizin genel hedefi İzmit Teknik ve Endüstri Meslek Lisesi meslek dersleri öğretmen niteliklerini ve iş güvenliği konusunda eğitim verebilme kalitelerini yükseltmek, bunu tüm öğrencilerimize yaygınlaştirmak, İs güvenliği konusunda tam donanımlı uzmanlar yetiştirmek ve is güvenliği kazalarını en aza indirmektir.</p>
-            
         </div>
-        <div class="box contactdetails">
-            <h2> İletişim Bilgilerimiz</h2>
-            <ul>
-                <li>İzmit MEsleki Ve Tekink Anadolu Lisesi</li>
-                <li>Karabaş Mah.</li>
-                <li>Kocaeli</li>
-                <li>41100</li>
-                <li>Tel: 0262 321 18 18</li>
-                <li>Fax: 0262 321 11 11</li>               
-                <li class="last">LinkedIn: <a href="#">Company Profile</a></li>
-            </ul>
-        </div>
-        <div class="box flickrbox">
-            <h2>   İş Güvenliği Resimleri</h2>
-            <div class="wrap">
-                <div class="fix"></div>
 
-                
-                <div class="flickr_badge_image" id="flickr_badge_image1"><a href="#"><img src="http://www.hancivata.com/image/cache/data/is_guvenlik/yangintup-80x80.jpg" /></a></div>
-                <div class="flickr_badge_image" id="flickr_badge_image2"><a href="#"><img src="http://www.hirdavatcenter.com/image/cache/data/products/3m/3m-h700ngu-80x80.jpg" /></a></div>
-                <div class="flickr_badge_image" id="flickr_badge_image3"><a href="#"><img src="http://shop.wurth.com.tr/images/thumb/0899/089940217396-is-guvenligi.png" alt="" /></a></div>
-                <div class="flickr_badge_image" id="flickr_badge_image4"><a href="#"><img src="http://ucercevre.com.tr/image/cache/data/100X-20122211365_esnek_trafik_konisi-80x80.jpg" alt="" /></a></div>
-                <div class="flickr_badge_image" id="flickr_badge_image5"><a href="#"><img src="http://isguvenligitabelasi.com/image/cache/data/Kategori_Resimleri/is_elbisesi-80x80.jpg" alt="" /></a></div>
-                <div class="flickr_badge_image" id="flickr_badge_image6"><a href="#"><img src="http://www.alsonyangin.com/content/images/levha/is_guvenlik_yasak_s.jpg" alt="" /></a></div>
-                <div class="fix"></div>
-            </div>
-        </div>
-        <br class="clear" />*@
     </div>
 </div>
