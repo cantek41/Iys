@@ -12,7 +12,7 @@ using System.Data.Entity;
 
 namespace iys.Controllers
 {
-    public class DocumentController : BaseController
+    public class DocumentController : AdminBaseController
     {
         //
         // GET: /Document/

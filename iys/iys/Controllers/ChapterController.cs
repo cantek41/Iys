@@ -11,7 +11,7 @@ using DevExpress.Web.Mvc;
 
 namespace iys.Controllers
 {
-    public class ChapterController : BaseController
+    public class ChapterController : AdminBaseController
     {
         private iysContext db = new iysContext();
 

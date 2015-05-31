@@ -8,7 +8,7 @@ using iys.Models;
 
 namespace iys.Controllers
 {
-    public class CourseController : BaseController
+    public class CourseController : AdminBaseController
     {
         //
         // GET: /Course/

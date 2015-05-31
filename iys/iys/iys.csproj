@@ -212,6 +212,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505271631105_InitialCreate.cs" />
+    <Compile Include="Migrations\201505271631105_InitialCreate.Designer.cs">
+      <DependentUpon>201505271631105_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\QuestionViewModel.cs" />
@@ -227,6 +232,7 @@
     <Content Include="Content\angular-ui.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\education.css" />
     <Content Include="Content\Images\ekipman.jpg" />
     <Content Include="Content\Images\okul_logo.jpg" />
     <Content Include="Content\Images\widescreen\slider1.jpg" />
@@ -741,6 +747,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505271631105_InitialCreate.resx">
+      <DependentUpon>201505271631105_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
@@ -764,7 +773,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>25204</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:25222/</IISUrl>
+          <IISUrl>http://localhost:25231/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

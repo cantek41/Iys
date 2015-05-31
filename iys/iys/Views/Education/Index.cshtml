@@ -1,4 +1,4 @@
-﻿@using System.Web.UI.WebControls 
+﻿@using System.Web.UI.WebControls
 @using System.Drawing
 @{
     ViewBag.Title = "Index";
@@ -8,7 +8,7 @@
 <script src="~/Scripts/angular.js"></script>
 <script>
     var content = angular.module('content', []);
-    content.controller('c_content',['$scope', function ($scope) {      
+    content.controller('c_content', ['$scope', function ($scope) {
     }]);
 </script>
 
@@ -35,7 +35,7 @@
     }
 
     .fail {
-      
+
         padding: 0;
     }
 
@@ -67,37 +67,44 @@
     }
 </style>
 <div class="_container">
-    <div class="classmarker_content" style="margin-left:0px;">
-        <div class="classmarker_content_inner">
-            <div class="clearheight30"></div>
-            <div class="boxinline">
-                <div class="fail">
-                    <h4> Course Title </h4>
+    <div ng-app="content">
+        <div id="content" ng-controller="c_content">
+            <div class="classmarker_content" style="margin-left:0px;">
+                <div class="classmarker_content_inner" ng-show="checked">
                     <div class="clearheight30"></div>
-                    <div class="dotted"></div>
-                    <p>Lesson Title</p>
+                    <div class="boxinline">
+                        <div class="fail">
+                            <h4> {{title}} </h4>
+                            <div class="clearheight30"></div>
+                            <div class="dotted"></div>
+                            <p>{{video}}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-    </div>
-      @using (Html.BeginForm("Exam", "Education"))
-  { 
-      <div ng-app="content">
-        <div id="content" ng-controller="c_content">           
-            <div ng-bind-html-unsafe="icerik"></div>
-            <div style="display: none"><input name="documenCode" ng-value="documenCode" /></div>
+            </div>
+
+            @using (Html.BeginForm("Exam", "Education"))
+            {
+                <div>
+                    <div>
+                        <div ng-bind-html-unsafe="icerik"></div>
+                        <div style="display: none"><input name="documenCode" ng-value="documenCode" /></div>
+                    </div>
+                </div>
+                <div style="margin-top:20px;" ng-show="checked">
+                    @Html.DevExpress().Button(settings =>
+                   {
+                       settings.Name = "btnSinavaGit";
+                       settings.Text = "Sınava Git";
+                       settings.UseSubmitBehavior = true;
+                   }).GetHtml()
+                </div>
+
+
+            }
         </div>
-    </div> 
-      <div style="margin-top:20px;">
-    @Html.DevExpress().Button(settings =>
-   {
-       settings.Name = "btnSinavaGit";
-       settings.Text = "Sınava Git";
-       settings.UseSubmitBehavior = true;
-   }).GetHtml()
     </div>
-  }
-    
-  
+
+
 </div>

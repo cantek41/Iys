@@ -7,7 +7,7 @@ using DevExpress.Web.Mvc;
 
 namespace iys.Controllers
 {
-    public class ANSWERController : BaseController
+    public class ANSWERController : AdminBaseController
     {
         //
         // GET: /ANSWER/
