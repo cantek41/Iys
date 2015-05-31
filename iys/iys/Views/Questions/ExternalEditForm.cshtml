@@ -57,14 +57,9 @@
                     {
                         settings.Name = "dersAdi";
                     }).GetHtml()
-
-
-
-
-                
                 <div style="display:none">
-                    @Html.DevExpress().TextBoxFor(model => model.Item2.DOCUMENT_CODE).GetHtml()
-                    @Html.DevExpress().TextBoxFor(model => model.Item2.QUESTION_CODE).GetHtml()
+                    @Html.HiddenFor(model => model.Item2.DOCUMENT_CODE)
+                    @Html.HiddenFor(model => model.Item2.QUESTION_CODE)
                 </div>
                 @Html.HiddenFor(model => model.Item2.COURSE_CODE)
                 @Html.HiddenFor(model => model.Item2.CHAPTER_CODE)
@@ -83,6 +78,8 @@
                    {
                        settings.Name = "memo";
                        settings.Text = "Confections - Desserts, candies, and sweet breads.";
+                       settings.Width = 500;
+                       settings.Height = 75;
                    }).GetHtml()
                 </div>
                 <!--Başlık-->
