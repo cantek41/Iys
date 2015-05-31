@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
   <group Text="Yönetici">
-    <item Text="Eğitim İçeriği" NavigateUrl="~/AdminPanel/Index" ImageUrl="~/Content/images/icons/blank.png"/>
-    <item Text="Kurslar" NavigateUrl="~/Course/Index" ImageUrl="~/Content/images/icons/inbox.png"/>
-    <item Text="Bölümler" NavigateUrl="~/Chapter/Index" ImageUrl="~/Content/images/icons/offer.png"/> 
-    <item Text="Dersler" NavigateUrl="~/Lesson/Index" ImageUrl="~/Content/images/icons/blank.png"/>
-    <item Text="Belgeler" NavigateUrl="~/Document/Index" ImageUrl="~/Content/images/icons/cart.png"/>
-    <item Text="Sorular" NavigateUrl="~/Questions/Index" ImageUrl="~/Content/images/icons/zoom.png"/>
+    <item Text="Eğitim İçeriği" NavigateUrl="~/AdminPanel/Index" ImageUrl="~/Content/images/icons/literature.png"/>
+    <item Text="Kurslar" NavigateUrl="~/Course/Index" ImageUrl="~/Content/images/icons/folder.png"/>
+    <item Text="Bölümler" NavigateUrl="~/Chapter/Index" ImageUrl="~/Content/images/icons/list.png"/> 
+    <item Text="Dersler" NavigateUrl="~/Lesson/Index" ImageUrl="~/Content/images/icons/book.png"/>
+    <item Text="Belgeler" NavigateUrl="~/Document/Index" ImageUrl="~/Content/images/icons/document.png"/>
+    <item Text="Sorular" NavigateUrl="~/Questions/Index" ImageUrl="~/Content/images/icons/question.png"/>
 
     <!--<item Text="" NavigateUrl="http://www.veribis.com.tr/" ImageUrl="~/Content/images/logo/logoyazisi.png"/>-->
   </group> 

@@ -234,6 +234,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\education.css" />
     <Content Include="Content\Images\ekipman.jpg" />
+    <Content Include="Content\Images\icons\book.png" />
+    <Content Include="Content\Images\icons\document.png" />
+    <Content Include="Content\Images\icons\question.png" />
     <Content Include="Content\Images\okul_logo.jpg" />
     <Content Include="Content\Images\widescreen\slider1.jpg" />
     <Content Include="Content\Images\widescreen\slider2.jpg" />
