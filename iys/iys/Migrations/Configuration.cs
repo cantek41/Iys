@@ -13,7 +13,7 @@ namespace iys.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-          
+            AutomaticMigrationDataLossAllowed = false;
             ContextKey = "iys.Models.ApplicationDbContext";
         }
 
@@ -34,16 +34,8 @@ namespace iys.Migrations
                 roleManager.Create(new IdentityRole { Name = "Student" });
                 userManager.AddToRole(user.Id, "Admin");
                 
-            }
-            
-            //ApplicationDbContext db = new ApplicationDbContext();
-            //RoleManager<IdentityRole> RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-            //UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            //var str = RoleManager.Create(new IdentityRole("Student"));
-            //var adm = RoleManager.Create(new IdentityRole("Admin"));
-            //var user = new ApplicationUser() { UserName = "Admin" };
-            //var result = UserManager.Create(user, "1q2w3e");
-            //base.Seed(context);
+            }           
+           
         }
     }
 }

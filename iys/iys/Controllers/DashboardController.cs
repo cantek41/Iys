@@ -25,16 +25,30 @@ namespace iys.Controllers
         public ActionResult userInfoPartial()
         {
             iys.ModelProject.iysContext db = new ModelProject.iysContext();
-            var model = (from d in db.USER_QUIZ_STATUSS
-                         join b in db.DOCUMENTS on d.DOCUMENT_CODE equals b.DOCUMENT_CODE
-                         select new succesVievModel { name = b.DOCUMENT_NAME, puan = d.GRADE }).ToList();
-            return PartialView("_userInfoPartial", model);
+            int model = 0;
+            try
+            {
+                model = (int)db.USER_QUIZ_STATUSS.Where(x => x.USER_CODE == User.Identity.Name).Average(x => x.GRADE).Value; 
+            }
+            catch (Exception)
+            {                
+                
+            }
+           
+                ////(from d in db.USER_QUIZ_STATUSS  
+                //         where d.USER_CODE==User.Identity.Name
+                //         select new succesVievModel { name = d.USER_CODE, puan = d.GRADE });
+            succesVievModel sv = new succesVievModel();
+            sv.name = User.Identity.Name;
+            sv.puan = model;
+            return PartialView("_userInfoPartial", sv);
 
         }
         public ActionResult calenderPartial()
         {
             iys.ModelProject.iysContext db = new ModelProject.iysContext();
             var model = from d in db.USER_QUIZ_STATUSS
+                        where d.USER_CODE==User.Identity.Name
                         select new { name = d.DATE, puan = d.GRADE };
             return PartialView("_calenderPartial", model.ToList());
         }
@@ -42,7 +56,7 @@ namespace iys.Controllers
         {
             iys.ModelProject.iysContext db = new ModelProject.iysContext();
             var model = (from d in db.DOCUMENTS
-                         from b in db.USER_QUIZ_STATUSS.Where(x=>x.DOCUMENT_CODE==d.DOCUMENT_CODE).DefaultIfEmpty()
+                         from b in db.USER_QUIZ_STATUSS.Where(x => x.DOCUMENT_CODE == d.DOCUMENT_CODE).Where(dd=>dd.USER_CODE == User.Identity.Name).DefaultIfEmpty()                        
                          select new succesVievModel { name = d.DOCUMENT_NAME, puan = b.GRADE }).ToList();
             return PartialView("_successPartial", model);
         }
@@ -56,7 +70,7 @@ namespace iys.Controllers
             scK.puan = db.DOCUMENTS.Count();
             succesVievModel scS = new succesVievModel();
             scS.name = "Biten";
-            scS.puan = db.USER_QUIZ_STATUSS.Where(x => x.GRADE >= 50).Count();
+            scS.puan = db.USER_QUIZ_STATUSS.Where(x=>x.USER_CODE==User.Identity.Name).Where(x => x.GRADE >= 50).Count();
             scK.puan = scK.puan - scS.puan;
             scList.Add(scK);
             scList.Add(scS);

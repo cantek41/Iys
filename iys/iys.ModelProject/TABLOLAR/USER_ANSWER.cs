@@ -14,7 +14,7 @@ namespace iys.ModelProject
         public int? QUIZ_CODE { get; set; }
         public int? QUESTION_CODE { get; set; }
         public string CHOOSE { get; set; }
-        public int? USER_CODE { get; set; }
+        public string USER_CODE { get; set; }
     }
 
     public class USER_QUIZ_STATUS
@@ -23,7 +23,7 @@ namespace iys.ModelProject
         public int QUIZ_CODE { get; set; }        
         public int? DOCUMENT_CODE { get; set; }
         public int? GRADE { get; set; }
-        public int? USER_CODE { get; set; }
+        public string USER_CODE { get; set; }
         public DateTime? DATE { get; set; }
     }
 }
