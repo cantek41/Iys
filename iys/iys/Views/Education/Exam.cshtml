@@ -92,7 +92,7 @@
     }
 
     label {
-      line-height:20px;
+      line-height:21px;
     }
 
     
@@ -100,14 +100,16 @@
     .sub-title {
         font-size: 12px;
         color: #ef6f08;
-        font-weight: bold;
+        font-weight:600;
     }
 
     .question {
         font-size: 12px;
         color: #444;
+        font-weight: 600;
     }
-
+  
+   
 
 </style>
 <div class="container">
@@ -145,7 +147,7 @@
             for (int j = 0; j < 5; j++)
             {
                 <div class="row" style="margin-left:1%;">
-                    <label style="margin-top:2px;">@Html.RadioButton(@item.QUESTION_CODE.ToString(), @siklar[j])</label>
+                    <label>@Html.RadioButton(@item.QUESTION_CODE.ToString(), @siklar[j])</label>
                     <label class="sub-title">@siklar[j])</label>
                     <label class="question">
                         @switch (j)

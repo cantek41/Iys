@@ -10,7 +10,9 @@
 
 
 a:hover {
-    vertical-align: middle;
+    /*vertical-align: middle;*/
+    color:#fff !important;
+    transition:all 1s;
    
 }
 
