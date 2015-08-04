@@ -7,13 +7,14 @@ namespace iys.Migrations
     using iys.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using iys.ModelProject;
 
     internal sealed class Configuration : DbMigrationsConfiguration<iys.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "iys.Models.ApplicationDbContext";
         }
 

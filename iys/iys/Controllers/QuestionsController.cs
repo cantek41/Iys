@@ -74,7 +74,7 @@ namespace iys.Controllers
                     question.chooseBText = Item2.chooseBText;
                     question.chooseCText = Item2.chooseCText;
                     question.chooseDText = Item2.chooseDText;
-                    question.chooseEText = Item2.chooseEText;
+                   // question.chooseEText = Item2.chooseEText;
                     db.QUESTIONS.Add(question);
                     db.SaveChanges();                    
                     return Content("Eklendi");

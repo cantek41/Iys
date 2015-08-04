@@ -4,6 +4,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_EducationLayout.cshtml";
 }
+<script>
+    $(document).ready(function () { $('#sinavaGit').hide(); });
+</script>
 
 <script src="~/Scripts/angular.js"></script>
 <script>
@@ -67,7 +70,8 @@
     }
 </style>
 <div class="_container">
-    <div ng-app="content">
+    <div ng-app="content" class="col-md-8">
+        @Html.ActionLink("Ana Sayfaya Git","Index","Home")
         <div id="content" ng-controller="c_content">
             <div class="classmarker_content" style="margin-left:0px;">
                 <div class="classmarker_content_inner" ng-show="checked">
@@ -92,7 +96,9 @@
                         <div style="display: none"><input name="documenCode" ng-value="documenCode" /></div>
                     </div>
                 </div>
-                <div style="margin-top:20px;" ng-show="checked">
+                <input type="text" id="fromTime"/>
+                
+                <div id="sinavaGit" style="margin-top:20px;">
                     @Html.DevExpress().Button(settings =>
                    {
                        settings.Name = "btnSinavaGit";
@@ -106,5 +112,10 @@
         </div>
     </div>
 
-
+<div class="col-md-2">
+    <center>
+        <img style="margin-bottom:10px; " src="~/img/ab.png" />
+       
+    </center>
+</div>
 </div>

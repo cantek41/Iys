@@ -76,8 +76,8 @@
 
                     @Html.DevExpress().Memo(settings =>
                    {
-                       settings.Name = "memo";
-                       settings.Text = "Confections - Desserts, candies, and sweet breads.";
+                       settings.Name = "Item2.questionText";
+                       settings.Text = Model.Item2.questionText;
                        settings.Width = 500;
                        settings.Height = 75;
                    }).GetHtml()
@@ -92,9 +92,9 @@
                 <!--/Başlık-->
                 <!--satirlar-->
                 @{
-        char[] siklar = { 'A', 'B', 'C', 'D', 'E' };
+        char[] siklar = { 'A', 'B', 'C', 'D' };
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             <div class="row">
 
@@ -116,10 +116,7 @@
                             break;
                         case 3:
                         @Html.DevExpress().TextBoxFor(model => model.Item2.chooseDText).GetHtml()
-                            break;
-                        case 4:
-                        @Html.DevExpress().TextBoxFor(model => model.Item2.chooseEText).GetHtml()
-                            break;
+                            break;                      
                         default:
                             break;
                     }

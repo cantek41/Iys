@@ -1,6 +1,6 @@
-﻿<script>
-    function OnTreeViewNodeClick(s, e) {        
-     //   angular.element(document.getElementById('content')).scope().Secim(e.node.name);//   $("#cmbNodes").val(e.node.name);
+﻿<script>    
+    function OnTreeViewNodeClick(s, e) {
+        //   angular.element(document.getElementById('content')).scope().Secim(e.node.name);//   $("#cmbNodes").val(e.node.name);
         $.ajax({
             url: "/Education/getContentDocumant",
             type: 'POST',
@@ -9,29 +9,49 @@
             success: function (data) {
                 var $scope = angular.element(document.getElementById('content')).scope();
                 $scope.$apply(function () {
-                    $scope.icerik = (data);
+                    $scope.icerik = (data.path);
                     $scope.documenCode = e.node.name;
                     $scope.checked = true;
+                    $('#sinavaGit').hide();
                     $scope.video = e.node.text;
                     $scope.title = e.node.parent.text;
+                    if (data.hata == 0) {                       
+                        timer(data.sure);
+                    }
                 });
             },
             error: function (data) {
-                alert("Server Hatası" + data.toString());
+                // alert("Server Hatası" + data.toString());
             }
-        });        
+        });
+    }
+    var zamanlayici;
+    
+    function timer(t) {
+        if (t <= 0) {
+            $('#sinavaGit').show();
+            clearTimeout(zamanlayici);
+        } else {
+            var dakika = parseInt(t / 60);
+            var saniye =parseInt(t % 60);
+            var sure = n(dakika) + ":" + n(saniye);          
+            $('#fromTime').val(sure);
+            zamanlayici = setTimeout(function () { timer(t - 1) }, 1000);
+        }
+    }
+    function n(n) {
+        return n > 9 ? "" + n : "0" + n;
     }
 </script>
-<div class="leftPanel">   
+<div class="leftPanel">
     @Html.DevExpress().TreeView(
     settings =>
     {
-        settings.Name = "treeList";
-
+        settings.Name = "treeList";        
         settings.CallbackRouteValues = new { Controller = "Education", Action = "TreeListPartial" };
         settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
         settings.AllowSelectNode = true;
-       //    settings.AllowCheckNodes = true;
+        //    settings.AllowCheckNodes = true;
 
 
         settings.ClientSideEvents.NodeClick = "OnTreeViewNodeClick";

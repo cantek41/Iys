@@ -7,6 +7,7 @@
     <item Text="Dersler" NavigateUrl="~/Lesson/Index" ImageUrl="~/Content/images/icons/book.png"/>
     <item Text="Belgeler" NavigateUrl="~/Document/Index" ImageUrl="~/Content/images/icons/document.png"/>
     <item Text="Sorular" NavigateUrl="~/Questions/Index" ImageUrl="~/Content/images/icons/question.png"/>
+    <item Text="Ana Sayfa" NavigateUrl="~/Home/Index" />
 
     <!--<item Text="" NavigateUrl="http://www.veribis.com.tr/" ImageUrl="~/Content/images/logo/logoyazisi.png"/>-->
   </group> 

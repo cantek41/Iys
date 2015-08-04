@@ -79,7 +79,7 @@ namespace iys.Controllers
             var model = db.DOCUMENTS;
             try
             {
-                item.PATH = filePath;
+             //   item.PATH = filePath;
                 item.PRIORITY = 0;
                 item.ROW_ORDER_NO = 0;
                 item.VISIBLE = true;

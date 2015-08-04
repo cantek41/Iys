@@ -10,6 +10,7 @@
     settings.ClientSideEvents.PaneResized = "function(s, e) { if(window.GridView && e.pane.name == 'ContentCenter') GridView.SetHeight(e.pane.GetClientHeight()); }";
     settings.Panes.Add(subpane =>
     {
+        subpane.ScrollBars = System.Web.UI.WebControls.ScrollBars.Auto;
         subpane.Name = "ContentLeft";
         subpane.PaneStyle.CssClass = "leftPane";
         subpane.ShowCollapseBackwardButton = DefaultBoolean.False;

@@ -56,8 +56,9 @@ namespace iys.Controllers
         {
             iys.ModelProject.iysContext db = new ModelProject.iysContext();
             var model = (from d in db.DOCUMENTS
-                         from b in db.USER_QUIZ_STATUSS.Where(x => x.DOCUMENT_CODE == d.DOCUMENT_CODE).Where(dd=>dd.USER_CODE == User.Identity.Name).DefaultIfEmpty()                        
-                         select new succesVievModel { name = d.DOCUMENT_NAME, puan = b.GRADE }).ToList();
+                         from b in db.USER_QUIZ_STATUSS.Where(x => x.DOCUMENT_CODE == d.DOCUMENT_CODE).Where(dd=>dd.USER_CODE == User.Identity.Name).DefaultIfEmpty()  
+                         orderby b.DATE descending
+                         select new succesVievModel { name = d.DOCUMENT_NAME.Substring(0,10), puan = b.GRADE }).Take(20).ToList();
             return PartialView("_successPartial", model);
         }
         public ActionResult ChartPartial()

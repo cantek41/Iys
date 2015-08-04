@@ -29,12 +29,39 @@ namespace iys.Controllers
             return PartialView("TreeList", getTree());
         }
         [HttpPost]
-        public string getContentDocumant(int DocumentCode)
+        public ActionResult getContentDocumant(int DocumentCode)
         {
             using (iysContext db = new iysContext())
             {
-                DOCUMENT doc = db.DOCUMENTS.Find(DocumentCode);
-                return doc.PATH;
+                string user = User.Identity.Name;
+                int DocumentCodeBefore = DocumentCode - 1;
+                USER_QUIZ_STATUS quiz = db.USER_QUIZ_STATUSS.Where(x => x.USER_CODE == user).Where(x => x.DOCUMENT_CODE == DocumentCodeBefore).FirstOrDefault();
+                docDetail d = new docDetail();
+                if (quiz != null || DocumentCode == 1 || User.IsInRole("Admin"))
+                {
+                    DOCUMENT doc = db.DOCUMENTS.Find(DocumentCode);
+
+                    d.sure = Convert.ToInt32(doc.DURATION.Substring(0, 2)) * 60 + Convert.ToInt32(doc.DURATION.Substring(3, 2));
+                    if (doc.DOCUMENT_TYPE == 5)//video
+                    {
+                        d.path = doc.PATH;
+                    }
+                    else if (doc.DOCUMENT_TYPE == 6)
+                    {
+                        d.path = String.Format("<embed src=\"../dersler/{0}\" width=\"600\" height=\"480\">", doc.PATH);
+                    }
+                    d.hata = 0;
+                }
+                else
+                {
+
+                    d.path = "Bu Dersi Almaya hakkınız yok!..";
+                    d.sure = 0;
+                    d.hata = 1;
+
+                }
+                return Json(d, JsonRequestBehavior.AllowGet);
+
             }
             // return "<embed src=\"/Content/pdfd.pdf\" width=\"500\" height=\"375\">"; 
         }
@@ -90,8 +117,9 @@ namespace iys.Controllers
             using (iysContext db = new iysContext())
             {
                 USER_QUIZ_STATUS quiz = new USER_QUIZ_STATUS();
-                quiz.DOCUMENT_CODE = DOCUMENT_CODE;              
+                quiz.DOCUMENT_CODE = DOCUMENT_CODE;
                 quiz.DATE = DateTime.Now;
+                quiz.USER_CODE = User.Identity.Name;
                 db.USER_QUIZ_STATUSS.Add(quiz);
                 db.SaveChanges();
                 List<QUESTION> sorular = db.QUESTIONS.Where(x => x.DOCUMENT_CODE == DOCUMENT_CODE).ToList();
@@ -99,21 +127,22 @@ namespace iys.Controllers
                 for (int i = 0; i < count; i++)
                 {
                     USER_ANSWER answer = new USER_ANSWER();
-                    string question_code = Request.Form["item_QUESTION_CODE_"+i.ToString()].ToString();
+                    string question_code = Request.Form["item_QUESTION_CODE_" + i.ToString()].ToString();
                     string chose = Request.Form[question_code].ToString();
                     answer.QUESTION_CODE = Convert.ToInt32(question_code);
                     answer.CHOOSE = chose;
                     answer.QUIZ_CODE = quiz.QUIZ_CODE;
+                    answer.USER_CODE = User.Identity.Name;
                     db.USER_ANSWERS.Add(answer);
 
                     //doğre cevap bul
-                    if (chose.Equals(sorular.Where(x=>x.QUESTION_CODE== answer.QUESTION_CODE).FirstOrDefault().rightChoose))
+                    if (chose.Equals(sorular.Where(x => x.QUESTION_CODE == answer.QUESTION_CODE).FirstOrDefault().rightChoose))
                     {
                         dogruCevap++;
                     }
                 }
 
-              
+
                 quiz.GRADE = (dogruCevap * 100) / count;
                 db.USER_QUIZ_STATUSS.Attach(quiz);
                 db.Entry(quiz).State = System.Data.Entity.EntityState.Modified;
@@ -123,4 +152,11 @@ namespace iys.Controllers
 
         }
     }
+}
+
+public class docDetail
+{
+    public int sure { get; set; }
+    public string path { get; set; }
+    public int hata { get; set; }
 }

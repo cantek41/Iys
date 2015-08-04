@@ -1,5 +1,6 @@
 ﻿
 using iys.ModelProject.TABLOLAR;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,10 +10,14 @@ using System.Threading.Tasks;
 
 namespace iys.ModelProject
 {
-    public class iysContext: DbContext
+    public class ApplicationUser : IdentityUser
+    {
+
+    }
+    public class iysContext : IdentityDbContext<ApplicationUser>
     {
         public iysContext()
-            : base("DefaultConnection")
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
 
         }

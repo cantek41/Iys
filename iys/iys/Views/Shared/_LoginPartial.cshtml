@@ -17,14 +17,14 @@
             <li><a href="@Url.Action("changeLanguage", "Base", new { lang ="EN"})"><img src="http://atommucizesi.imanisiteler.com/images/engBayrak.png" /></a></li>*@
             <li><a class="header-yazi-ozellik" href="javascript:document.getElementById('logoutForm').submit()">ÇIKIŞ</a></li>
 
-            @*@if (Roles.IsUserInRole("Admin"))
-            {*@
+            @if (Roles.IsUserInRole("Admin"))
+            {
                 <li>@Html.ActionLink("YÖNET", "Manege", "Home", new {@class="link" })</li>
-            @*}
+            }
             else
             {
                 <li>@Html.ActionLink("Eğitim", "index", "Dashboard")</li>
-            }*@
+            }
 
             <li>
 
